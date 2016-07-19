@@ -19,7 +19,6 @@
 
 package org.log;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
