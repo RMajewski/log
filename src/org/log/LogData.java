@@ -197,69 +197,202 @@ public class LogData {
 		_out = out;
 	}
 	
-	/**
-	 * Speichert die übergebene Nachricht und markiert sie so, dass sie nicht
-	 * ausgegeben werden soll.
-	 * 
-	 * @param message Nachricht, die gespeichert werden soll.
-	 * 
-	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
-	 */
-	public void setMessageAsNoOut(String message, String error) {
-		setMessage(message);
-		setError(error);
-		setOut(NO_OUT);
+	private static String createError(StackTraceElement[] trace) {
+		String result = new String();
+		
+		for (int i = 0; i < trace.length; i++)
+			result += trace[i].getClassName() + "." + trace[i].getMethodName() +
+				"(" + trace[i].getFileName() + ":" + trace[i].getLineNumber() +
+				")" + System.lineSeparator();
+		
+		return result;
 	}
 	
 	/**
-	 * Speichert die übergebene Nachricht und markiert sie als Fehler.
+	 * Erzeugt eine neue Nachricht und markiert sie als normale Nachricht.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public void setMessageAsError(String message, String error) {
-		setMessage(message);
-		setError(error);
-		setOut(ERROR);
+	public static LogData message(String message, String error) {
+		return new LogData(message, error, NONE);
 	}
 	
 	/**
-	 * Speichert die übergebene Nachricht und markiert sie als Warnung.
+	 * Erzeugt eine neue Nachricht und markiert sie als normale Nachricht.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
-	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public void setMessageAsWarning(String message, String error) {
-		setMessage(message);
-		setError(error);
-		setOut(WARNING);
+	public static LogData message(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), NONE);
 	}
 	
 	/**
-	 * Speichert die übergebene Nachricht und markiert sie als erfolgreich.
+	 * Erzeugt eine neue Nachricht und markiert sie mit dem übergebenen Wert.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @param out Markierung der Nachricht.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public void setMessageAsOk(String message, String error) {
-		setMessage(message);
-		setError(error);
-		setOut(OK);
+	public static LogData message(String message, String error, short out) {
+		return new LogData(message, error, out);
 	}
 	
 	/**
-	 * Speichert die übergebene Nachricht und markiert sie als Information.
+	 * Erzeugt eine neue Nachricht und markiert sie mit dem übergebenen Wert.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @param out Markierung der Nachricht.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 */
+	public static LogData message(String message, StackTraceElement[] error, short out) {
+		return new LogData(message, createError(error), out);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie, dass sie nicht angezeigt
+	 * werden soll.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public void setMessageAsInformation(String message, String error) {
-		setMessage(message);
-		setError(error);
-		setOut(INFO);
+	public static LogData messageNoOut(String message, String error) {
+		return new LogData(message, error, NO_OUT);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie, dass sie nicht angezeigt
+	 * werden soll.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 */
+	public static LogData messageNoOut(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), NO_OUT);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert als Fehler.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageError(String message, String error) {
+		return new LogData(message, error, ERROR);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert als Fehler.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageError(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), ERROR);
+	}
+	
+	/**
+	 * Erzeugt eine neue NAchricht und markiert sie als Warnung.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageWarning(String message, String error) {
+		return new LogData(message, error, WARNING);
+	}
+	
+	/**
+	 * Erzeugt eine neue NAchricht und markiert sie als Warnung.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageWarning(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), WARNING);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als erfolgreich.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageOk(String message, String error) {
+		return new LogData(message, error, OK);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als erfolgreich.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageOk(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), OK);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Information.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageInformation(String message, String error) {
+		return new LogData(message, error, INFO);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Information.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageInformation(String message, StackTraceElement[] error) {
+		return new LogData(message, createError(error), INFO);
 	}
 }
