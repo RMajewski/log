@@ -324,30 +324,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#message(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#message(String, Exception)}.
 	 */
 	@Test
 	public void testMessageStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.message(_message, exception);
 		
-		_data = LogData.message(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -355,30 +340,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#message(String, StackTraceElement[], short)}.
+	 * Testet die Methode {@link org.log.LogData#message(String, Exception, short)}.
 	 */
 	@Test
 	public void testMessageStackTraceOut() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.message(_message, exception, LogData.WARNING);
 		
-		_data = LogData.message(_message, 
-				new StackTraceElement[]{ste1, ste2}, LogData.WARNING);
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -386,30 +356,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#messageError(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#messageError(String, Exception)}.
 	 */
 	@Test
 	public void testMessageErrorStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.messageError(_message, exception);
 		
-		_data = LogData.messageError(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -417,30 +372,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#messageWarning(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#messageWarning(String, Exception)}.
 	 */
 	@Test
 	public void testMessageWarningStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.messageWarning(_message, exception);
 		
-		_data = LogData.messageWarning(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -448,30 +388,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#messageNoOut(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#messageNoOut(String, Exception)}.
 	 */
 	@Test
 	public void testMessageNoOutStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.messageNoOut(_message, exception);
 		
-		_data = LogData.messageNoOut(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -479,30 +404,15 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#messageOk(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#messageOk(String, Exception)}.
 	 */
 	@Test
 	public void testMessageOkStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.messageOk(_message, exception);
 		
-		_data = LogData.messageOk(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
@@ -510,33 +420,105 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Method {@link org.log.LogData#messageInformation(String, StackTraceElement[])}.
+	 * Testet die Methode {@link org.log.LogData#messageInformation(String, Exception)}.
 	 */
 	@Test
 	public void testMessageInfoStackTrace() {
-		String class1 = "Test1";
-		String class2 = "Test2";
-		String method1 = "test1";
-		String method2 = "test2";
-		String file1 = "Test1.java";
-		String file2 = "Test2.java";
-		int line1 = 100;
-		int line2 = 200;
+		Exception exception = new Exception();
 		
-		StackTraceElement ste1 = new StackTraceElement(class1, method1, file1,
-				line1);
-		StackTraceElement ste2 = new StackTraceElement(class2, method2, file2, 
-				line2);
+		_data = LogData.messageInformation(_message, exception);
 		
-		_data = LogData.messageInformation(_message, 
-				new StackTraceElement[]{ste1, ste2});
-		
-		String error = class1 + "." + method1 + "(" + file1 + ":" + line1 + 
-				")" + System.lineSeparator() + class2 + "." + method2 + "(" + 
-				file2 + ":" + line2 + ")" + System.lineSeparator();
+		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
 		assertEquals(LogData.INFO, _data.getOut());
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#createError(Exception)}.
+	 */
+	@Test
+	public void testCreateErrorWithoutErrorMessage() {
+		Exception exception = new Exception();
+		
+		String result = Exception.class.getName() + System.lineSeparator();
+		
+		for (int i = 0; i < exception.getStackTrace().length; i++)
+			result += "    " + exception.getStackTrace()[i].getClassName() +
+				"." + exception.getStackTrace()[i].getMethodName() + "(" +
+				exception.getStackTrace()[i].getFileName() + ":" +
+				String.valueOf(exception.getStackTrace()[i].getLineNumber()) +
+				")" + System.lineSeparator();
+		
+		assertEquals(result, LogData.createError(exception));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#createError(Exception)}.
+	 */
+	@Test
+	public void testCreateErrorWithErrorMessage() {
+		Exception exception = new Exception(_message);
+		
+		String result = Exception.class.getName() + "( \"" +  _message +
+				"\" )" + System.lineSeparator();
+		
+		for (int i = 0; i < exception.getStackTrace().length; i++)
+			result += "    " + exception.getStackTrace()[i].getClassName() +
+				"." + exception.getStackTrace()[i].getMethodName() + "(" +
+				exception.getStackTrace()[i].getFileName() + ":" +
+				String.valueOf(exception.getStackTrace()[i].getLineNumber()) +
+				")" + System.lineSeparator();
+		
+		assertEquals(result, LogData.createError(exception));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorNoOut() {
+		assertEquals(LogData.COLOR_NONE, LogData.getColor(LogData.NO_OUT));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorError() {
+		assertEquals(LogData.COLOR_ERROR, LogData.getColor(LogData.ERROR));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorWarning() {
+		assertEquals(LogData.COLOR_WARNING, LogData.getColor(LogData.WARNING));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorNone() {
+		assertEquals(LogData.COLOR_NONE, LogData.getColor(LogData.NONE));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorOk() {
+		assertEquals(LogData.COLOR_OK, LogData.getColor(LogData.OK));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 */
+	@Test
+	public void testGetColorInformation() {
+		assertEquals(LogData.COLOR_INFO, LogData.getColor(LogData.INFO));
 	}
 }

@@ -197,13 +197,26 @@ public class LogData {
 		_out = out;
 	}
 	
-	private static String createError(StackTraceElement[] trace) {
-		String result = new String();
+	/**
+	 * Erstellt aus dem übergebenen Fehler eine Fehler-Nachricht.
+	 * 
+	 * @param error Fehler, aus dem die Fehler-Nachricht erstellt werden soll.
+	 * 
+	 * @return Erstellt Fehler-Nachricht.
+	 */
+	public static String createError(Exception error) {
+		String result = error.getClass().getName();
 		
+		if ((error.getMessage() != null) && !error.getMessage().isEmpty())
+			result += "( \"" + error.getMessage() + "\" )";
+		
+		result += System.lineSeparator();
+		
+		StackTraceElement[] trace = error.getStackTrace();
 		for (int i = 0; i < trace.length; i++)
-			result += trace[i].getClassName() + "." + trace[i].getMethodName() +
-				"(" + trace[i].getFileName() + ":" + trace[i].getLineNumber() +
-				")" + System.lineSeparator();
+			result += "    " + trace[i].getClassName() + "." + 
+				trace[i].getMethodName() + "(" + trace[i].getFileName() + ":" +
+				trace[i].getLineNumber() + ")" + System.lineSeparator();
 		
 		return result;
 	}
@@ -230,7 +243,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public static LogData message(String message, StackTraceElement[] error) {
+	public static LogData message(String message, Exception error) {
 		return new LogData(message, createError(error), NONE);
 	}
 	
@@ -260,7 +273,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public static LogData message(String message, StackTraceElement[] error, short out) {
+	public static LogData message(String message, Exception error, short out) {
 		return new LogData(message, createError(error), out);
 	}
 	
@@ -288,7 +301,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
 	 */
-	public static LogData messageNoOut(String message, StackTraceElement[] error) {
+	public static LogData messageNoOut(String message, Exception error) {
 		return new LogData(message, createError(error), NO_OUT);
 	}
 	
@@ -314,7 +327,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
 	 */
-	public static LogData messageError(String message, StackTraceElement[] error) {
+	public static LogData messageError(String message, Exception error) {
 		return new LogData(message, createError(error), ERROR);
 	}
 	
@@ -340,7 +353,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
 	 */
-	public static LogData messageWarning(String message, StackTraceElement[] error) {
+	public static LogData messageWarning(String message, Exception error) {
 		return new LogData(message, createError(error), WARNING);
 	}
 	
@@ -366,7 +379,7 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
 	 */
-	public static LogData messageOk(String message, StackTraceElement[] error) {
+	public static LogData messageOk(String message, Exception error) {
 		return new LogData(message, createError(error), OK);
 	}
 	
@@ -392,7 +405,32 @@ public class LogData {
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
 	 */
-	public static LogData messageInformation(String message, StackTraceElement[] error) {
+	public static LogData messageInformation(String message, Exception error) {
 		return new LogData(message, createError(error), INFO);
+	}
+	
+	/**
+	 * Ermittelt aus dem angegeben Wert die Hintergrund-Farbe.
+	 * 
+	 * @param out Als was soll die Nachricht dargestellt werden?
+	 * 
+	 * @return Ermittelte Hintergrund-Farbe.
+	 */
+	public static Color getColor(short out) {
+		switch (out) {
+			case LogData.ERROR:
+				return LogData.COLOR_ERROR;
+				
+			case LogData.WARNING:
+				return LogData.COLOR_WARNING;
+				
+			case LogData.OK:
+				return LogData.COLOR_OK;
+				
+			case LogData.INFO:
+				return LogData.COLOR_INFO;
+		}
+		
+		return LogData.COLOR_NONE;
 	}
 }
