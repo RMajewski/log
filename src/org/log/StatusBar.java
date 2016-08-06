@@ -19,11 +19,16 @@
 
 package org.log;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.border.BevelBorder;
 
 /**
@@ -32,15 +37,35 @@ import javax.swing.border.BevelBorder;
  * Der letzte Log-Eintrag wird in der Status-Bar angezeigt, sofern er nicht als
  * "nicht ausgeben" markiert wurde.
  * 
+ * Version 0.2: Es kann wahlweise das Label mit den Nachrichten angezeigt werden
+ * oder eine Fortschrittsanzeige.
+ * 
  * @author René Majewski
  *
+ * @version 0.2
  */
-public class StatusBar extends JLabel {
+public class StatusBar extends JPanel {
 
 	/**
 	 * Serilisation ID
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Speichert das Label für die Nachrichten.
+	 */
+	private JLabel _label;
+	
+	/**
+	 * Speichert die Fortschrittsanzeige.
+	 */
+	private JProgressBar _progress;
+	
+	/**
+	 * Speichert den Wert, um die den Fortschrittsanzeige bei jeden Aufruf
+	 * erhöht werden soll.
+	 */
+	private int _progressIncrease;
 
 	/**
 	 * Speichert die Instanz der Status-Bar.
@@ -56,13 +81,29 @@ public class StatusBar extends JLabel {
 	 * Initialisieren der Status-Bar.
 	 */
 	private StatusBar() {
-		// JLabel initialisieren
+		// Panel initialisieren
 		super();
-		setPreferredSize(new Dimension(100, 20));
+		setPreferredSize(new Dimension(200, 20));
 		setBorder(new BevelBorder(BevelBorder.LOWERED));
 		
 		// Liste initialisieren
 		_list = new ArrayList<LogData>();
+		
+		// Layout-Manager
+		setLayout(new BorderLayout());
+		
+		// Label initialisieren und anzeigen
+		_label = new JLabel();
+		_label.setForeground(Color.WHITE);
+		add(_label, BorderLayout.CENTER);
+		
+		// Fortschrittsanzeige initialisieren
+		_progress = new JProgressBar();
+		_progress.setPreferredSize(new Dimension(100, 20));
+		_progress.setBorderPainted(true);
+		_progress.setStringPainted(true);
+		initProgressBar(0, 0, 1);
+		add(_progress, BorderLayout.EAST);
 	}
 	
 	/**
@@ -88,8 +129,9 @@ public class StatusBar extends JLabel {
 	 * @param message Text, der angezeigt werden soll.
 	 */
 	public void setMessage(String message) {
-		setText(message);
+		_label.setText(message);
 		setBackground(LogData.COLOR_NONE);
+		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(new LogData(message, null));
 	}
 	
@@ -104,8 +146,9 @@ public class StatusBar extends JLabel {
 	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefügt werden soll
 	 */
 	public void setMessage(String message, String error) {
-		setText(message);
+		_label.setText(message);
 		setBackground(LogData.COLOR_NONE);
+		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(new LogData(message, error));
 	}
 	
@@ -121,8 +164,9 @@ public class StatusBar extends JLabel {
 	 * soll.
 	 */
 	public void setMessage(String message, Exception error) {
-		setText(message);
+		_label.setText(message);
 		setBackground(LogData.COLOR_NONE);
+		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(LogData.message(message, error));
 	}
 	
@@ -141,8 +185,9 @@ public class StatusBar extends JLabel {
 	 */
 	public void setMessage(String message, String error, short out) {
 		if (out > LogData.NO_OUT) {
-			setText(message);
-			setBackground(LogData.getColor(out));
+			_label.setText(message);
+			setBackground(LogData.getBackground(out));
+			_label.setForeground(LogData.getForeground(out));
 		}
 		_list.add(new LogData(message, error, out));
 	}
@@ -163,8 +208,9 @@ public class StatusBar extends JLabel {
 	 */
 	public void setMessage(String message, Exception error, short out) {
 		if (out > LogData.NO_OUT) {
-			setText(message);
-			setBackground(LogData.getColor(out));
+			_label.setText(message);
+			setBackground(LogData.getBackground(out));
+			_label.setForeground(LogData.getForeground(out));
 		}
 		_list.add(LogData.message(message, error, out));
 	}
@@ -179,8 +225,9 @@ public class StatusBar extends JLabel {
 	 */
 	public void setMessage(LogData log) {
 		if (log.getOut() > LogData.NO_OUT) {
-			setText(log.getMessage());
-			setBackground(LogData.getColor(log.getOut()));
+			_label.setText(log.getMessage());
+			setBackground(LogData.getBackground(log.getOut()));
+			_label.setForeground(LogData.getForeground(log.getOut()));
 		}
 		_list.add(log);
 	}
@@ -189,9 +236,11 @@ public class StatusBar extends JLabel {
 	 * Leert die Liste mit den Log-Einträgen.
 	 */
 	public void clear() {
-		setText(new String());
-		setBackground(LogData.getColor(LogData.NONE));
+		_label.setText(new String());
+		setBackground(LogData.getBackground(LogData.NONE));
+		_label.setForeground(LogData.getForeground(LogData.NONE));
 		_list.clear();
+		_progress.setValue(0);
 	}
 	
 	/**
@@ -201,5 +250,65 @@ public class StatusBar extends JLabel {
 	 */
 	public List<LogData> getLog() {
 		return _list;
+	}
+	
+	/**
+	 * Minimalen und maximalen Wert der Fortschrittsanzeige einstellen.
+	 * 
+	 * @param min Minimaler Wert der Fortschrittsanzeige.
+	 * 
+	 * @param max Maximaler Wert der Fortschrittsanzeige.
+	 * 
+	 * @param increase Wert, um den erhöht werden soll.
+	 */
+	public void initProgressBar(int min, int max, int increase) {
+		_progress.setValue(0);
+		_progress.setMinimum(min);
+		_progress.setMaximum(max);
+		_progressIncrease = increase;
+	}
+	
+	/**
+	 * Wert der Fortschrittsanzeige erhöhen. Erhöht den Wert den
+	 * Fortschrittsanzeige, um den den eingestellten Wert.
+	 */
+	public void progressBarIncrease() {
+		_progress.setValue(_progress.getValue() + _progressIncrease);
+	}
+	
+	/**
+	 * Ermittelt den Wert der Fortschrittsanzeige.
+	 * 
+	 * @return Aktueller Wert der Fortschrittsanzeige.
+	 */
+	public int getProgressBarValue() {
+		return _progress.getValue();
+	}
+	
+	/**
+	 * Setzt den Wert der Fortschrittsanzeige auf den übergebenen Wert.
+	 * 
+	 * @param value Neuer Wert der Fortschrittsanzeige.
+	 */
+	public void setProgressBarValue(int value) {
+		_progress.setValue(value);
+	}
+	
+	/**
+	 * Ermittelt den Text den angezeigten Text und gibt diesen zurück.
+	 * 
+	 * @return Aktuell angezeigter Text.
+	 */
+	public String getText() {
+		return _label.getText();
+	}
+	
+	/**
+	 * Speichert die Log-Einträge in eine Datei
+	 * 
+	 * @param name Name der Log-Datei.
+	 */
+	public void writeToFile(String name) {
+		LogView.writeToFile(new File(name));
 	}
 }

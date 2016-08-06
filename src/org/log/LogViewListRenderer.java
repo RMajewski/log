@@ -59,8 +59,8 @@ public class LogViewListRenderer extends JLabel
 			setForeground(UIManager.getColor("List.selectionForeground"));
 			setBackground(UIManager.getColor("List.seelctionBackground"));
 		} else {
-			setForeground(UIManager.getColor("List.foreground"));
-			setBackground(LogData.getColor(value.getOut()));
+			setForeground(LogData.getForeground(value.getOut()));
+			setBackground(LogData.getBackground(value.getOut()));
 		}
 		
 		return this;

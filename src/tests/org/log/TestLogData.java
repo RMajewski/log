@@ -475,50 +475,50 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorNoOut() {
-		assertEquals(LogData.COLOR_NONE, LogData.getColor(LogData.NO_OUT));
+		assertEquals(LogData.COLOR_NONE, LogData.getBackground(LogData.NO_OUT));
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorError() {
-		assertEquals(LogData.COLOR_ERROR, LogData.getColor(LogData.ERROR));
+		assertEquals(LogData.COLOR_ERROR, LogData.getBackground(LogData.ERROR));
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorWarning() {
-		assertEquals(LogData.COLOR_WARNING, LogData.getColor(LogData.WARNING));
+		assertEquals(LogData.COLOR_WARNING, LogData.getBackground(LogData.WARNING));
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorNone() {
-		assertEquals(LogData.COLOR_NONE, LogData.getColor(LogData.NONE));
+		assertEquals(LogData.COLOR_NONE, LogData.getBackground(LogData.NONE));
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorOk() {
-		assertEquals(LogData.COLOR_OK, LogData.getColor(LogData.OK));
+		assertEquals(LogData.COLOR_OK, LogData.getBackground(LogData.OK));
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getColor(short)}.
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorInformation() {
-		assertEquals(LogData.COLOR_INFO, LogData.getColor(LogData.INFO));
+		assertEquals(LogData.COLOR_INFO, LogData.getBackground(LogData.INFO));
 	}
 }

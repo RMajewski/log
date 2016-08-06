@@ -71,7 +71,7 @@ public class LogData {
 	public static final short OK = 4;
 	
 	/**
-	 * Gibt an, dass die Nachrciht einen Information ist.
+	 * Gibt an, dass die Nachricht einen Information ist.
 	 */
 	public static final short INFO = 5;
 	
@@ -99,6 +99,31 @@ public class LogData {
 	 * Speichert die Farbe für eine Information.
 	 */
 	public static final Color COLOR_INFO = Color.BLUE;
+	
+	/**
+	 * Speichert die Schrift-Farbe für einen Fehler.
+	 */
+	public static final Color FCOLOR_ERROR = Color.WHITE;
+	
+	/**
+	 * Speichert die Schrift-Farbe für eine Warnung.
+	 */
+	public static final Color FCOLOR_WARNING = Color.BLACK;
+	
+	/**
+	 * Speichert die Schrift-Farbe für eine Normale Nachricht.
+	 */
+	public static final Color FCOLOR_NONE = Color.BLACK;
+	
+	/**
+	 * Speichert die Schrift-Farbe für eine Erfolgs-Nachricht.
+	 */
+	public static final Color FCOLOR_OK = Color.BLACK;
+	
+	/**
+	 * Speichert die Schrift-Farbe für eine Information.
+	 */
+	public static final Color FCOLOR_INFO = Color.CYAN;
 	
 	/**
 	 * Initialisiert die Nachricht ohne Daten.
@@ -415,8 +440,21 @@ public class LogData {
 	 * @param out Als was soll die Nachricht dargestellt werden?
 	 * 
 	 * @return Ermittelte Hintergrund-Farbe.
+	 * 
+	 * @deprecated Ersetzt durch {@link #getBackground(short)}
 	 */
 	public static Color getColor(short out) {
+		return getBackground(out);
+	}
+	
+	/**
+	 * Ermittelt aus dem angegeben Wert die Hintergrund-Farbe.
+	 * 
+	 * @param out Als was soll die Nachricht dargestellt werden?
+	 * 
+	 * @return Ermittelte Hintergrund-Farbe.
+	 */
+	public static Color getBackground(short out) {
 		switch (out) {
 			case LogData.ERROR:
 				return LogData.COLOR_ERROR;
@@ -432,5 +470,30 @@ public class LogData {
 		}
 		
 		return LogData.COLOR_NONE;
+	}
+	
+	/**
+	 * Ermittelt aus dem angegeben Wert die Schrift-Farbe.
+	 * 
+	 * @param out Als was soll die Nachricht dargestellt werden?
+	 * 
+	 * @return Ermittelte Schrift-Farbe.
+	 */
+	public static Color getForeground(short out) {
+		switch (out) {
+			case LogData.ERROR:
+				return LogData.FCOLOR_ERROR;
+				
+			case LogData.WARNING:
+				return LogData.FCOLOR_WARNING;
+				
+			case LogData.OK:
+				return LogData.FCOLOR_OK;
+				
+			case LogData.INFO:
+				return LogData.FCOLOR_INFO;
+		}
+		
+		return LogData.FCOLOR_NONE;
 	}
 }

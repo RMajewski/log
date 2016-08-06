@@ -101,7 +101,7 @@ public class ErrorSyntax extends DefaultStyledDocument {
 		StyleConstants.setFontSize(DEFAULT_CLASSES, DEFAULT_FONT_SIZE);
 
 		DEFAULT_FILE = new SimpleAttributeSet();
-		StyleConstants.setForeground(DEFAULT_FILE, Color.BLUE);
+		StyleConstants.setForeground(DEFAULT_FILE, Color.cyan);
 		StyleConstants.setBackground(DEFAULT_FILE, Color.BLACK);
 		StyleConstants.setFontFamily(DEFAULT_FILE, DEFAULT_FONT_FAMILY);
 		StyleConstants.setFontSize(DEFAULT_FILE, DEFAULT_FONT_SIZE);
@@ -252,6 +252,7 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	 */
 	public void setTabs(int count) {
 		Font font = new Font(_fontName, Font.PLAIN, _fontSize);
+		@SuppressWarnings("deprecation")
 		FontMetrics metrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
 		int charWidth = metrics.charWidth(' ');
 		int tabWidth = charWidth * count;

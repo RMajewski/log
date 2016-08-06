@@ -105,7 +105,7 @@ public class LogView extends JInternalFrame
 		super();
 		
 		// Fenstergröße und Fenster-Titel
-		setSize(600, 400);
+		setSize(800, 600);
 		setTitle(WND_TITLE);
 		
 		// Fenster-Eigenschaften
@@ -173,6 +173,8 @@ public class LogView extends JInternalFrame
 		_listLog.addListSelectionListener(this);
 		split.setLeftComponent(new JScrollPane(_listLog));
 		
+		split.setDividerLocation(300);
+		
 		// Fenster anzeigen
 		setVisible(true);
 	}
@@ -186,7 +188,7 @@ public class LogView extends JInternalFrame
 	}
 
 	/**
-	 * Ragiert auf die Selektion der Liste.
+	 * Reagiert auf die Selektion der Liste.
 	 * 
 	 * @param lse Event-Daten
 	 */
@@ -228,34 +230,41 @@ public class LogView extends JInternalFrame
 			int state = fc.showSaveDialog(null);
 			
 			if (state == JFileChooser.APPROVE_OPTION) {
-				try {
-					File file = fc.getSelectedFile();
-					FileWriter fw = new FileWriter(file);
-					BufferedWriter bw = new BufferedWriter(fw);
-					
-					List<LogData> list = StatusBar.getInstance().getLog();
-					for (int i = 0; i < list.size(); i++) {
-						if (i > 0)
-							bw.write(System.lineSeparator());
-						
-						LogData data = list.get(i);
-						
-						bw.write(data.getMessage());
-						bw.write(System.lineSeparator());
-						
-						if (!data.getError().isEmpty()) {
-							bw.write(data.getError());
-							bw.write(System.lineSeparator());
-						}
-					}
-					
-					bw.close();
-				} catch (IOException e) {
-					StatusBar.getInstance().setMessage("Es ist ein Fehler " + 
-							"beim Speichern der Log-Datei aufgetreten.", e);
-				}
+				writeToFile(fc.getSelectedFile());
 			}
 		}
 	}
 
+	/**
+	 * Speichert alle Log-Einträge in die angegebene Datei.
+	 * 
+	 * @param file Datei, in die die Log-Einträge geschrieben werden sollen.
+	 */
+	public static void writeToFile(File file) {
+		try {
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			List<LogData> list = StatusBar.getInstance().getLog();
+			for (int i = 0; i < list.size(); i++) {
+				if (i > 0)
+					bw.write(System.lineSeparator());
+				
+				LogData data = list.get(i);
+				
+				bw.write(data.getMessage());
+				bw.write(System.lineSeparator());
+				
+				if (!data.getError().isEmpty()) {
+					bw.write(data.getError());
+					bw.write(System.lineSeparator());
+				}
+			}
+			
+			bw.close();
+		} catch (IOException e) {
+			StatusBar.getInstance().setMessage("Es ist ein Fehler " + 
+					"beim Speichern der Log-Datei aufgetreten.", e);
+		}
+	}
 }
