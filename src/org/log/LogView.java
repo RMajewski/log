@@ -31,8 +31,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.Box;
@@ -242,8 +245,8 @@ public class LogView extends JInternalFrame
 	 */
 	public static void writeToFile(File file) {
 		try {
-			FileWriter fw = new FileWriter(file);
-			BufferedWriter bw = new BufferedWriter(fw);
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+					new FileOutputStream(file), "UTF-8"));
 			
 			List<LogData> list = StatusBar.getInstance().getLog();
 			for (int i = 0; i < list.size(); i++) {
@@ -251,6 +254,12 @@ public class LogView extends JInternalFrame
 					bw.write(System.lineSeparator());
 				
 				LogData data = list.get(i);
+				
+				bw.write(DateFormat.getDateTimeInstance(
+						DateFormat.MEDIUM, DateFormat.MEDIUM)
+						.format(new Date(data.getCreateTime())));
+				
+				bw.write(": ");
 				
 				bw.write(data.getMessage());
 				bw.write(System.lineSeparator());

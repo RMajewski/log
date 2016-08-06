@@ -46,6 +46,11 @@ public class LogData {
 	private short _out;
 	
 	/**
+	 * Speichert wann die Nachricht erstellt wurde als Timestamp.
+	 */
+	private long _create;
+	
+	/**
 	 * Gibt an, dass die Nachricht nicht ausgegeben werden soll.
 	 */
 	public static final short NO_OUT = 0;
@@ -132,6 +137,7 @@ public class LogData {
 		setMessage(null);
 		setError(null);
 		setOut(NO_OUT);
+		_create = System.currentTimeMillis();
 	}
 	
 	/**
@@ -145,6 +151,7 @@ public class LogData {
 		setMessage(message);
 		setError(error);
 		setOut(NONE);
+		_create = System.currentTimeMillis();
 	}
 	
 	/**
@@ -160,6 +167,7 @@ public class LogData {
 		setMessage(message);
 		setError(error);
 		setOut(out);
+		_create = System.currentTimeMillis();
 	}
 
 	/**
@@ -495,5 +503,14 @@ public class LogData {
 		}
 		
 		return LogData.FCOLOR_NONE;
+	}
+	
+	/**
+	 * Gibt den Timestamp zurück, wann die Nachricht erstellt wurde.
+	 * 
+	 * @return Timestamp, wann die Nachtricht erstellet wurde.
+	 */
+	public long getCreateTime() {
+		return _create;
 	}
 }
