@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 René Majewski
+* Copyright 2016 RenÃ© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europäischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie dürfen dieses Werk ausschließlich gemäß dieser Lizenz
+* EuropÃ¤ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie dÃ¼rfen dieses Werk ausschlieÃŸlich gemÃ¤ÃŸ dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-* ausdrücklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEWÃ„HRLEISTUNG ODER BEDINGUNGEN -
+* ausdrÃ¼cklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und BeschrÃ¤nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -30,7 +30,7 @@ import org.log.LogData;
 /**
  * Testet die Klasse {@link org.log.LogData}.
  * 
- * @author René Majewski
+ * @author RenÃ© Majewski
  *
  * @version 0.1
  * @since 0.1
@@ -42,22 +42,22 @@ public class TestLogData {
 	private LogData _data;
 	
 	/**
-	 * Speichert den Text für die 1. Test-Nachricht.
+	 * Speichert den Text fÃ¼r die 1. Test-Nachricht.
 	 */
 	private String _message;
 	
 	/**
-	 * Speichert den Text für die 2. Test-Nachricht.
+	 * Speichert den Text fÃ¼r die 2. Test-Nachricht.
 	 */
 	private String _message2;
 	
 	/**
-	 * Speichert den Text für die 1. Fehlerbeschreibung.
+	 * Speichert den Text fÃ¼r die 1. Fehlerbeschreibung.
 	 */
 	private String _error;
 	
 	/**
-	 * Speichert den Text für die 2. Fehlerbeschreibung.
+	 * Speichert den Text fÃ¼r die 2. Fehlerbeschreibung.
 	 */
 	private String _error2;
 	

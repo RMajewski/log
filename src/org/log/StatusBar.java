@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 René Majewski
+* Copyright 2016 RenÃ© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europäischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie dürfen dieses Werk ausschließlich gemäß dieser Lizenz
+* EuropÃ¤ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie dÃ¼rfen dieses Werk ausschlieÃŸlich gemÃ¤ÃŸ dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-* ausdrücklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEWÃ„HRLEISTUNG ODER BEDINGUNGEN -
+* ausdrÃ¼cklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und BeschrÃ¤nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -40,7 +40,7 @@ import javax.swing.border.BevelBorder;
  * Version 0.2: Es kann wahlweise das Label mit den Nachrichten angezeigt werden
  * oder eine Fortschrittsanzeige.
  * 
- * @author René Majewski
+ * @author RenÃ© Majewski
  *
  * @version 0.2
  */
@@ -52,7 +52,7 @@ public class StatusBar extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Speichert das Label für die Nachrichten.
+	 * Speichert das Label fÃ¼r die Nachrichten.
 	 */
 	private JLabel _label;
 	
@@ -63,7 +63,7 @@ public class StatusBar extends JPanel {
 	
 	/**
 	 * Speichert den Wert, um die den Fortschrittsanzeige bei jeden Aufruf
-	 * erhöht werden soll.
+	 * erhÃ¶ht werden soll.
 	 */
 	private int _progressIncrease;
 
@@ -73,7 +73,7 @@ public class StatusBar extends JPanel {
 	private static StatusBar _status;
 	
 	/**
-	 * Speichert die Liste der in der Status-Bar angezeigten Log-Einträge.
+	 * Speichert die Liste der in der Status-Bar angezeigten Log-EintrÃ¤ge.
 	 */
 	private List<LogData> _list;
 	
@@ -107,10 +107,10 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Gibt die Instanz der Status-Bar zurück.
+	 * Gibt die Instanz der Status-Bar zurÃ¼ck.
 	 * 
 	 *  Sollte die Instanz nicht initialisiert sein, so wird sie vor der
-	 *  Rückgabe initialisiert.
+	 *  RÃ¼ckgabe initialisiert.
 	 *  
 	 *  @return Initialisierte Instanz der Status-Bar.
 	 */
@@ -124,7 +124,7 @@ public class StatusBar extends JPanel {
 	 * Zeigt den angegebenen Text an.
 	 * 
 	 * Bevor der Text ausgegeben wird, wird noch ein Log-Eintrag erzeugt, der
-	 * in der Liste der Log-Einträge gespeichert wird.
+	 * in der Liste der Log-EintrÃ¤ge gespeichert wird.
 	 * 
 	 * @param message Text, der angezeigt werden soll.
 	 */
@@ -139,11 +139,11 @@ public class StatusBar extends JPanel {
 	 * Zeigt den angegebenen Text an.
 	 * 
 	 * Bevor der Text ausgegeben wird, wird noch ein Log-Eintrag erzeugt, der
-	 * in der Liste der Log-Einträge gespeichert wird.
+	 * in der Liste der Log-EintrÃ¤ge gespeichert wird.
 	 * 
 	 *  @param message Text, der angezeigt werden soll.
 	 *  
-	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefügt werden soll
+	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefÃ¼gt werden soll
 	 */
 	public void setMessage(String message, String error) {
 		_label.setText(message);
@@ -156,7 +156,7 @@ public class StatusBar extends JPanel {
 	 * Zeigt den angegebenen Text an.
 	 * 
 	 * Bevor der Text ausgegeben wird, wird noch ein Log-Eintrag erzeugt, der
-	 * in der Liste der Log-Einträge gespeichert wird.
+	 * in der Liste der Log-EintrÃ¤ge gespeichert wird.
 	 * 
 	 * @param message Text, der angezeigt werden soll
 	 * 
@@ -174,11 +174,11 @@ public class StatusBar extends JPanel {
 	 * Zeigt den angegebenen Text an.
 	 * 
 	 * Bevor der Text ausgegeben wird, wird noch ein Log-Eintrag erzeugt, der
-	 * in der Liste der Log-Einträge gespeichert wird.
+	 * in der Liste der Log-EintrÃ¤ge gespeichert wird.
 	 * 
 	 *  @param message Text, der angezeigt werden soll.
 	 *  
-	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefügt werden soll
+	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefÃ¼gt werden soll
 	 *  
 	 *  @param out Als was soll die Nachricht markiert werden? Siehe
 	 *  {@link org.log.LogData}.
@@ -196,7 +196,7 @@ public class StatusBar extends JPanel {
 	 * Zeigt den angegebenen Text an.
 	 * 
 	 * Bevor der Text ausgegeben wird, wird noch ein Log-Eintrag erzeugt, der
-	 * in der Liste der Log-Einträge gespeichert wird.
+	 * in der Liste der Log-EintrÃ¤ge gespeichert wird.
 	 * 
 	 * @param message Text, der angezeigt werden soll
 	 * 
@@ -218,8 +218,8 @@ public class StatusBar extends JPanel {
 	/**
 	 * Zeigt den angegeben Text an.
 	 * 
-	 * Es wird der Nachrichten-Text des übergebenen Log-Eintrages angezeigt.
-	 * Der Log-Eintrag wird in der List der Log-Einträge gespeichert.
+	 * Es wird der Nachrichten-Text des Ã¼bergebenen Log-Eintrages angezeigt.
+	 * Der Log-Eintrag wird in der List der Log-EintrÃ¤ge gespeichert.
 	 * 
 	 * @param log Log-Eintrag, der gespeichert und ausgegeben werden soll.
 	 */
@@ -233,7 +233,7 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Leert die Liste mit den Log-Einträgen.
+	 * Leert die Liste mit den Log-EintrÃ¤gen.
 	 */
 	public void clear() {
 		_label.setText(new String());
@@ -244,9 +244,9 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Gibt die Liste mit den Log-Einträgen zurück.
+	 * Gibt die Liste mit den Log-EintrÃ¤gen zurÃ¼ck.
 	 * 
-	 * @return Liste mit den Log-Einträgen.
+	 * @return Liste mit den Log-EintrÃ¤gen.
 	 */
 	public List<LogData> getLog() {
 		return _list;
@@ -259,7 +259,7 @@ public class StatusBar extends JPanel {
 	 * 
 	 * @param max Maximaler Wert der Fortschrittsanzeige.
 	 * 
-	 * @param increase Wert, um den erhöht werden soll.
+	 * @param increase Wert, um den erhÃ¶ht werden soll.
 	 */
 	public void initProgressBar(int min, int max, int increase) {
 		_progress.setValue(0);
@@ -269,7 +269,7 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Wert der Fortschrittsanzeige erhöhen. Erhöht den Wert den
+	 * Wert der Fortschrittsanzeige erhÃ¶hen. ErhÃ¶ht den Wert den
 	 * Fortschrittsanzeige, um den den eingestellten Wert.
 	 */
 	public void progressBarIncrease() {
@@ -286,7 +286,7 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Setzt den Wert der Fortschrittsanzeige auf den übergebenen Wert.
+	 * Setzt den Wert der Fortschrittsanzeige auf den Ã¼bergebenen Wert.
 	 * 
 	 * @param value Neuer Wert der Fortschrittsanzeige.
 	 */
@@ -295,7 +295,7 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Ermittelt den Text den angezeigten Text und gibt diesen zurück.
+	 * Ermittelt den Text den angezeigten Text und gibt diesen zurÃ¼ck.
 	 * 
 	 * @return Aktuell angezeigter Text.
 	 */
@@ -304,7 +304,7 @@ public class StatusBar extends JPanel {
 	}
 	
 	/**
-	 * Speichert die Log-Einträge in eine Datei
+	 * Speichert die Log-EintrÃ¤ge in eine Datei
 	 * 
 	 * @param name Name der Log-Datei.
 	 */

@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 René Majewski
+* Copyright 2016 RenÃ© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europäischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie dürfen dieses Werk ausschließlich gemäß dieser Lizenz
+* EuropÃ¤ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie dÃ¼rfen dieses Werk ausschlieÃŸlich gemÃ¤ÃŸ dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-* ausdrücklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEWÃ„HRLEISTUNG ODER BEDINGUNGEN -
+* ausdrÃ¼cklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und BeschrÃ¤nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -40,7 +40,7 @@ import javax.swing.text.TabStop;
 /**
  * Stellt den Fehlerbericht farbig dar.
  * 
- * @author René Majewski
+ * @author RenÃ© Majewski
  *
  * @version 0.1
  * @since 0.1
@@ -52,32 +52,32 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Speichert den Namen für die standard Schriftart.
+	 * Speichert den Namen fÃ¼r die standard Schriftart.
 	 */
 	private static final String DEFAULT_FONT_FAMILY = "Curier New";
 	
 	/**
-	 * Speichert die standard Schriftgröße.
+	 * Speichert die standard SchriftgrÃ¶ÃŸe.
 	 */
 	private static final int DEFAULT_FONT_SIZE = 12;
 	
 	/**
-	 * Schrift-Attribute für normale Ausgabe.
+	 * Schrift-Attribute fÃ¼r normale Ausgabe.
 	 */
 	public static final SimpleAttributeSet DEFAULT_NORMAL;
 	
 	/**
-	 * Schrift-Attribute für Fehler-Klassen.
+	 * Schrift-Attribute fÃ¼r Fehler-Klassen.
 	 */
 	public static final SimpleAttributeSet DEFAULT_ERROR;
 	
 	/**
-	 * Schrift-Attribute für eigene Klassen.
+	 * Schrift-Attribute fÃ¼r eigene Klassen.
 	 */
 	public static final SimpleAttributeSet DEFAULT_CLASSES;
 	
 	/**
-	 * Schrift-Attribute für Datei-Namen.
+	 * Schrift-Attribute fÃ¼r Datei-Namen.
 	 */
 	public static final SimpleAttributeSet DEFAULT_FILE;
 	
@@ -113,32 +113,32 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	private DefaultStyledDocument _doc;
 	
 	/**
-	 * Speichert das Dokument, in dem alle anderen Elemente eingefügt werden.
+	 * Speichert das Dokument, in dem alle anderen Elemente eingefÃ¼gt werden.
 	 */
 	private Element _rootElement;
 	
 	/**
-	 * Speichert die Attribute für normale Ausgaben.
+	 * Speichert die Attribute fÃ¼r normale Ausgaben.
 	 */
 	private MutableAttributeSet _normal = DEFAULT_NORMAL;
 	
 	/**
-	 * Speichert die Attribute für Fehler-Klassen.
+	 * Speichert die Attribute fÃ¼r Fehler-Klassen.
 	 */
 	private MutableAttributeSet _error = DEFAULT_ERROR;
 	
 	/**
-	 * Speichert die Attribute für eigene Klassen
+	 * Speichert die Attribute fÃ¼r eigene Klassen
 	 */
 	private MutableAttributeSet _class = DEFAULT_CLASSES;
 	
 	/**
-	 * Speichert die Attribute für Datei-Namen
+	 * Speichert die Attribute fÃ¼r Datei-Namen
 	 */
 	private MutableAttributeSet _file = DEFAULT_FILE;
 	
 	/**
-	 * Zuordnung der Schrift-Attribute zu den Schlüsselwörtern.
+	 * Zuordnung der Schrift-Attribute zu den SchlÃ¼sselwÃ¶rtern.
 	 */
 	private HashMap<String, MutableAttributeSet> _keywords;
 	
@@ -148,7 +148,7 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	private HashMap<String, MutableAttributeSet> _classes;
 	
 	/**
-	 * Speichert die Schriftgröße.
+	 * Speichert die SchriftgrÃ¶ÃŸe.
 	 */
 	private int _fontSize;
 	
@@ -172,12 +172,12 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Ordnet zu den Schlüsselwort die entsprechenden Schrift-Formatierungen
+	 * Ordnet zu den SchlÃ¼sselwort die entsprechenden Schrift-Formatierungen
 	 * zu.
 	 * 
-	 * @param key Schlüsselwort, welches in die Liste eingetragen werden soll.
+	 * @param key SchlÃ¼sselwort, welches in die Liste eingetragen werden soll.
 	 * 
-	 * @param attr Schrift-Attribute, die dem Schlüsselwort zugeordnet werden
+	 * @param attr Schrift-Attribute, die dem SchlÃ¼sselwort zugeordnet werden
 	 * sollen.
 	 */
 	public void addKeyword(String key, MutableAttributeSet attr) {
@@ -185,8 +185,8 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Fügt den Namen einer Fehler-Klasse hinzu und ordnet ihr die
-	 * Schrift-Formatierungen für Fehler-Klassen zu.
+	 * FÃ¼gt den Namen einer Fehler-Klasse hinzu und ordnet ihr die
+	 * Schrift-Formatierungen fÃ¼r Fehler-Klassen zu.
 	 * 
 	 * @param exception Name der Fehler-Klasse.
 	 */
@@ -207,48 +207,48 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Ermittelt die SChrift-Attribute für das ausgewählte Schlüsselwort.
+	 * Ermittelt die SChrift-Attribute fÃ¼r das ausgewÃ¤hlte SchlÃ¼sselwort.
 	 * 
-	 * @param key Schlüsselwort, dessen Schrift-Attribute ermittelt werden
+	 * @param key SchlÃ¼sselwort, dessen Schrift-Attribute ermittelt werden
 	 * sollen.
 	 * 
-	 * @return Schrift-Attribute des ausgewählten Schlüsselwortes.
+	 * @return Schrift-Attribute des ausgewÃ¤hlten SchlÃ¼sselwortes.
 	 */
 	public MutableAttributeSet getKeywordFormatting(String key) {
 		return _keywords.get(key);
 	}
 	
 	/**
-	 * Ermittelt die Schrift-Attribute für eine Fehler-Klasse.
+	 * Ermittelt die Schrift-Attribute fÃ¼r eine Fehler-Klasse.
 	 * 
-	 * @return Schrift-Attribute für die Fehler-Klassen.
+	 * @return Schrift-Attribute fÃ¼r die Fehler-Klassen.
 	 */
 	public MutableAttributeSet getExceptionFormatting() {
 		return _error;
 	}
 	
 	/**
-	 * Löscht ein Schlüsselwort aus der Liste.
+	 * LÃ¶scht ein SchlÃ¼sselwort aus der Liste.
 	 * 
-	 * @param key Schlüsselwort, dass aus der Liste gelöscht werden soll.
+	 * @param key SchlÃ¼sselwort, dass aus der Liste gelÃ¶scht werden soll.
 	 */
 	public void removeKeyword(String key) {
 		_keywords.remove(key);
 	}
 	
 	/**
-	 * Löscht eine Fehler-Fehlerklasse aus der Liste.
+	 * LÃ¶scht eine Fehler-Fehlerklasse aus der Liste.
 	 * 
-	 * @param exception Fehler-Klasse, die aus der Liste gelöscht werden soll.
+	 * @param exception Fehler-Klasse, die aus der Liste gelÃ¶scht werden soll.
 	 */
 	public void removeException(String exception) {
 		_classes.remove(exception);
 	}
 	
 	/**
-	 * Setzt die Anzahl der Zeichen für einen Tabulator.
+	 * Setzt die Anzahl der Zeichen fÃ¼r einen Tabulator.
 	 * 
-	 * @param count Anzahl der Zeichen für einen Tabulator.
+	 * @param count Anzahl der Zeichen fÃ¼r einen Tabulator.
 	 */
 	public void setTabs(int count) {
 		Font font = new Font(_fontName, Font.PLAIN, _fontSize);
@@ -269,18 +269,18 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Gibt die verwendete Schriftgröße zurück.
+	 * Gibt die verwendete SchriftgrÃ¶ÃŸe zurÃ¼ck.
 	 * 
-	 * @return Verwendete Schriftgröße.
+	 * @return Verwendete SchriftgrÃ¶ÃŸe.
 	 */
 	public int getFontSize() {
 		return _fontSize;
 	}
 	
 	/**
-	 * Setzt die verwendete Schriftgröße neu.
+	 * Setzt die verwendete SchriftgrÃ¶ÃŸe neu.
 	 * 
-	 * @param size Neue Schriftgröße.
+	 * @param size Neue SchriftgrÃ¶ÃŸe.
 	 */
 	public void setFontSize(int size) {
 		_fontSize = size;
@@ -292,7 +292,7 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Gibt die verwendete Schriftart zurück.
+	 * Gibt die verwendete Schriftart zurÃ¼ck.
 	 * 
 	 * @return Vervendete Schriftart.
 	 */
@@ -315,11 +315,11 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Fügt neuen Text in das Dokument ein.
+	 * FÃ¼gt neuen Text in das Dokument ein.
 	 * 
-	 * @param offset Stelle, an die der Text eingefügt werden soll.
+	 * @param offset Stelle, an die der Text eingefÃ¼gt werden soll.
 	 * 
-	 * @param str Zeichenkette, die eingefügt werden soll.
+	 * @param str Zeichenkette, die eingefÃ¼gt werden soll.
 	 * 
 	 * @param atr Schrift-Attribute.
 	 */
@@ -331,11 +331,11 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Löscht die angegebene Zeichenkette.
+	 * LÃ¶scht die angegebene Zeichenkette.
 	 * 
-	 * @param offset Stelle, von der an gelöscht werden soll.
+	 * @param offset Stelle, von der an gelÃ¶scht werden soll.
 	 * 
-	 * @param length Anzahl Zeichen, die gelöscht werden sollen.
+	 * @param length Anzahl Zeichen, die gelÃ¶scht werden sollen.
 	 */
 	@Override
 	public void remove(int offset, int length) throws BadLocationException {
@@ -344,14 +344,14 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Liest die veränderten Zeichen ein.
+	 * Liest die verÃ¤nderten Zeichen ein.
 	 * 
-	 * @param offset Stelle, an der die Veränderung beginnt.
+	 * @param offset Stelle, an der die VerÃ¤nderung beginnt.
 	 * 
-	 * @param length Anzahl Zeichen, die verändert wurden.
+	 * @param length Anzahl Zeichen, die verÃ¤ndert wurden.
 	 * 
 	 * @throws BadLocationException Wird aufgerufen, wenn an einer Stelle Text
-	 * geändert werden soll, die nicht vorhanden ist. 
+	 * geÃ¤ndert werden soll, die nicht vorhanden ist. 
 	 */
 	public void processChangedLines(int offset, int length)
 			throws BadLocationException {
@@ -365,7 +365,7 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Durchsucht die übergebewne Zeichenkette nach Zeichen, die mit einem
+	 * Durchsucht die Ã¼bergebewne Zeichenkette nach Zeichen, die mit einem
 	 * Highlight versehen werden sollen.
 	 * 
 	 * @param content Zeichenkette, die verarbeitet werden soll.
@@ -381,11 +381,11 @@ public class ErrorSyntax extends DefaultStyledDocument {
 		if (endOffset >= contentLength)
 			endOffset = contentLength - 1;
 		
-		// erste Zeichenbeschränkungen
+		// erste ZeichenbeschrÃ¤nkungen
 		int test1 = content.indexOf(':', startOffset);
 		int test2 = content.indexOf('(', startOffset);
 		
-		// Überprüfen, ib eine Klasse existiert
+		// ÃœberprÃ¼fen, ib eine Klasse existiert
 		int length = 0;
 		if ((test1 > -1) && (test1 <= endOffset) && (test2 > endOffset)) {
 			length = test1 - startOffset;
@@ -428,8 +428,8 @@ public class ErrorSyntax extends DefaultStyledDocument {
 	}
 	
 	/**
-	 * Überprüft, ob in der Zeichenkette source die Zeichenkette part enthalten
-	 * ist. Ist dies der Fall, so wird true zurück gegeben. Wenn nicht, dann
+	 * ÃœberprÃ¼ft, ob in der Zeichenkette source die Zeichenkette part enthalten
+	 * ist. Ist dies der Fall, so wird true zurÃ¼ck gegeben. Wenn nicht, dann
 	 * false.
 	 * 
 	 * @param source Zeichenktte, die durchsucht werden soll.

@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 René Majewski
+* Copyright 2016 RenÃ© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europäischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie dürfen dieses Werk ausschließlich gemäß dieser Lizenz
+* EuropÃ¤ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie dÃ¼rfen dieses Werk ausschlieÃŸlich gemÃ¤ÃŸ dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-* ausdrücklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEWÃ„HRLEISTUNG ODER BEDINGUNGEN -
+* ausdrÃ¼cklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und BeschrÃ¤nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -22,9 +22,9 @@ package org.log;
 import java.awt.Color;
 
 /**
- * Speichert die Daten für eine Log-Nachricht.
+ * Speichert die Daten fÃ¼r eine Log-Nachricht.
  * 
- * @author René Majewski
+ * @author RenÃ© Majewski
  *
  * @version 0.1
  * @since 0.1
@@ -81,52 +81,52 @@ public class LogData {
 	public static final short INFO = 5;
 	
 	/**
-	 * Speichert die Farbe für eine Fehler
+	 * Speichert die Farbe fÃ¼r eine Fehler
 	 */
 	public static final Color COLOR_ERROR = Color.RED;
 	
 	/**
-	 * Speichert die Farbe für eine Warnung
+	 * Speichert die Farbe fÃ¼r eine Warnung
 	 */
 	public static final Color COLOR_WARNING = Color.ORANGE;
 	
 	/**
-	 * Speichert die Farbe für eine Normale Nachricht
+	 * Speichert die Farbe fÃ¼r eine Normale Nachricht
 	 */
 	public static final Color COLOR_NONE = Color.LIGHT_GRAY;
 	
 	/**
-	 * Speichert die Farbe für eine Erfolgs-Nachricht.
+	 * Speichert die Farbe fÃ¼r eine Erfolgs-Nachricht.
 	 */
 	public static final Color COLOR_OK = Color.GREEN;
 	
 	/**
-	 * Speichert die Farbe für eine Information.
+	 * Speichert die Farbe fÃ¼r eine Information.
 	 */
 	public static final Color COLOR_INFO = Color.BLUE;
 	
 	/**
-	 * Speichert die Schrift-Farbe für einen Fehler.
+	 * Speichert die Schrift-Farbe fÃ¼r einen Fehler.
 	 */
 	public static final Color FCOLOR_ERROR = Color.WHITE;
 	
 	/**
-	 * Speichert die Schrift-Farbe für eine Warnung.
+	 * Speichert die Schrift-Farbe fÃ¼r eine Warnung.
 	 */
 	public static final Color FCOLOR_WARNING = Color.BLACK;
 	
 	/**
-	 * Speichert die Schrift-Farbe für eine Normale Nachricht.
+	 * Speichert die Schrift-Farbe fÃ¼r eine Normale Nachricht.
 	 */
 	public static final Color FCOLOR_NONE = Color.BLACK;
 	
 	/**
-	 * Speichert die Schrift-Farbe für eine Erfolgs-Nachricht.
+	 * Speichert die Schrift-Farbe fÃ¼r eine Erfolgs-Nachricht.
 	 */
 	public static final Color FCOLOR_OK = Color.BLACK;
 	
 	/**
-	 * Speichert die Schrift-Farbe für eine Information.
+	 * Speichert die Schrift-Farbe fÃ¼r eine Information.
 	 */
 	public static final Color FCOLOR_INFO = Color.CYAN;
 	
@@ -171,7 +171,7 @@ public class LogData {
 	}
 
 	/**
-	 * Gibt die gespeicherte Nachricht zurück.
+	 * Gibt die gespeicherte Nachricht zurÃ¼ck.
 	 * 
 	 * @return Nchricht, die gespeichert ist.
 	 */
@@ -180,7 +180,7 @@ public class LogData {
 	}
 
 	/**
-	 * Speichert die übergebene Nachricht.
+	 * Speichert die Ã¼bergebene Nachricht.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll. 
 	 */
@@ -192,7 +192,7 @@ public class LogData {
 	}
 
 	/**
-	 * Gibt die gespeicherte Fehlerbeschreibung zurück.
+	 * Gibt die gespeicherte Fehlerbeschreibung zurÃ¼ck.
 	 * 
 	 * @return Fehlerbeschreibung, die gespeichert wurde.
 	 */
@@ -201,7 +201,7 @@ public class LogData {
 	}
 
 	/**
-	 * Speichert die übergebene Fehlerbeschreibung.
+	 * Speichert die Ã¼bergebene Fehlerbeschreibung.
 	 * 
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 */
@@ -213,7 +213,7 @@ public class LogData {
 	}
 
 	/**
-	 * Gibt zurück, wie die Nachricht dargestellt werden soll.
+	 * Gibt zurÃ¼ck, wie die Nachricht dargestellt werden soll.
 	 * 
 	 * @return Wie soll die Nachricht dargestellt werden?
 	 */
@@ -231,7 +231,7 @@ public class LogData {
 	}
 	
 	/**
-	 * Erstellt aus dem übergebenen Fehler eine Fehler-Nachricht.
+	 * Erstellt aus dem Ã¼bergebenen Fehler eine Fehler-Nachricht.
 	 * 
 	 * @param error Fehler, aus dem die Fehler-Nachricht erstellt werden soll.
 	 * 
@@ -281,7 +281,7 @@ public class LogData {
 	}
 	
 	/**
-	 * Erzeugt eine neue Nachricht und markiert sie mit dem übergebenen Wert.
+	 * Erzeugt eine neue Nachricht und markiert sie mit dem Ã¼bergebenen Wert.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
@@ -296,7 +296,7 @@ public class LogData {
 	}
 	
 	/**
-	 * Erzeugt eine neue Nachricht und markiert sie mit dem übergebenen Wert.
+	 * Erzeugt eine neue Nachricht und markiert sie mit dem Ã¼bergebenen Wert.
 	 * 
 	 * @param message Nachricht, die gespeichert werden soll.
 	 * 
@@ -506,7 +506,7 @@ public class LogData {
 	}
 	
 	/**
-	 * Gibt den Timestamp zurück, wann die Nachricht erstellt wurde.
+	 * Gibt den Timestamp zurÃ¼ck, wann die Nachricht erstellt wurde.
 	 * 
 	 * @return Timestamp, wann die Nachtricht erstellet wurde.
 	 */

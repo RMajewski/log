@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 René Majewski
+* Copyright 2016 RenÃ© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europäischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie dürfen dieses Werk ausschließlich gemäß dieser Lizenz
+* EuropÃ¤ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie dÃ¼rfen dieses Werk ausschlieÃŸlich gemÃ¤ÃŸ dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWÄHRLEISTUNG ODER BEDINGUNGEN -
-* ausdrücklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEWÃ„HRLEISTUNG ODER BEDINGUNGEN -
+* ausdrÃ¼cklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und BeschrÃ¤nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -56,10 +56,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * In diesem Fenster wird das Log angezeigt.
  * 
  * Wenn auf ein Element der List mit Log-Nachrichten geklickt wird, wird die
- * Fehlermeldung angezeigt, sofern sie vorhanden ist. Die Fehlermeldungen können
+ * Fehlermeldung angezeigt, sofern sie vorhanden ist. Die Fehlermeldungen kÃ¶nnen
  * in die Zwischenablage kopiert und / oder gespeichert werden.
  * 
- * @author René Majewski
+ * @author RenÃ© Majewski
  *
  * @version 0.1
  * @since 0.1
@@ -77,17 +77,17 @@ public class LogView extends JInternalFrame
 	private static final String WND_TITLE = "Log";
 	
 	/**
-	 * Speichert das Kommando für den OK-Button.
+	 * Speichert das Kommando fÃ¼r den OK-Button.
 	 */
 	private static final String OK = "LogView.ok";
 	
 	/**
-	 * Speichert das Kommando zum Einfügen in die Zwischenablage.
+	 * Speichert das Kommando zum EinfÃ¼gen in die Zwischenablage.
 	 */
 	private static final String CLIPBOARD = "LogView.clipboard";
 	
 	/**
-	 * Speichert das Kommando zum Speichern der Log-Einträge.
+	 * Speichert das Kommando zum Speichern der Log-EintrÃ¤ge.
 	 */
 	private static final String SAVE = "LogView.save";
 	
@@ -97,7 +97,7 @@ public class LogView extends JInternalFrame
 	private JEditorPane _txtError;
 	
 	/**
-	 * Speichert die List mit den Log-Einträgen.
+	 * Speichert die List mit den Log-EintrÃ¤gen.
 	 */
 	private JList<LogData> _listLog;
 	
@@ -107,7 +107,7 @@ public class LogView extends JInternalFrame
 	public LogView() {
 		super();
 		
-		// Fenstergröße und Fenster-Titel
+		// FenstergrÃ¶ÃŸe und Fenster-Titel
 		setSize(800, 600);
 		setTitle(WND_TITLE);
 		
@@ -129,7 +129,7 @@ public class LogView extends JInternalFrame
 		// Layout
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		// Panel für die Buttons
+		// Panel fÃ¼r die Buttons
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.SOUTH);
 		
@@ -143,7 +143,7 @@ public class LogView extends JInternalFrame
 		Component hs = Box.createHorizontalStrut(75);
 		panel.add(hs);
 		
-		// Button für ZWischenablage
+		// Button fÃ¼r ZWischenablage
 		btn = new JButton("In die Zwischenablage");
 		btn.setMnemonic('Z');
 		btn.setActionCommand(CLIPBOARD);
@@ -157,11 +157,11 @@ public class LogView extends JInternalFrame
 		btn.addActionListener(this);
 		panel.add(btn);
 		
-		// Splitplane einfügen
+		// Splitplane einfÃ¼gen
 		JSplitPane split = new JSplitPane();
 		getContentPane().add(split, BorderLayout.CENTER);
 		
-		// Text-Feld für die Fehlerbeschreibung
+		// Text-Feld fÃ¼r die Fehlerbeschreibung
 		_txtError = new JEditorPane();
 		_txtError.setEditable(false);
 		_txtError.setEditorKitForContentType("text", new LogEditorKit());
@@ -169,7 +169,7 @@ public class LogView extends JInternalFrame
 		_txtError.setBackground(Color.BLACK);
 		split.setRightComponent(new JScrollPane(_txtError));
 		
-		// Liste für Log-Einträge
+		// Liste fÃ¼r Log-EintrÃ¤ge
 		_listLog = new JList<LogData>();
 		_listLog.setModel(model);
 		_listLog.setCellRenderer(new LogViewListRenderer());
@@ -239,9 +239,9 @@ public class LogView extends JInternalFrame
 	}
 
 	/**
-	 * Speichert alle Log-Einträge in die angegebene Datei.
+	 * Speichert alle Log-EintrÃ¤ge in die angegebene Datei.
 	 * 
-	 * @param file Datei, in die die Log-Einträge geschrieben werden sollen.
+	 * @param file Datei, in die die Log-EintrÃ¤ge geschrieben werden sollen.
 	 */
 	public static void writeToFile(File file) {
 		try {

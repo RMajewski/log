@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 RenÈ Majewski
+* Copyright 2016 Ren√© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europ‰ischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie d¸rfen dieses Werk ausschlieﬂlich gem‰ﬂ dieser Lizenz
+* Europ√§ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie d√ºrfen dieses Werk ausschlie√ülich gem√§√ü dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWƒHRLEISTUNG ODER BEDINGUNGEN -
-* ausdr¸cklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschr‰nkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEW√ÑHRLEISTUNG ODER BEDINGUNGEN -
+* ausdr√ºcklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und Beschr√§nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -27,9 +27,9 @@ import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
 /**
- * Zeigt die Eintr‰ge der Log-Liste an.
+ * Zeigt die Eintr√§ge der Log-Liste an.
  * 
- * @author RenÈ Majewski
+ * @author Ren√© Majewski
  *
  * @version 0.1
  * @since 0.1
@@ -51,10 +51,10 @@ public class LogViewListRenderer extends JLabel
 		// Nachricht anzeigen
 		setText(value.getMessage());
 		
-		// Muss aufgerufen werden, um den Hintergrund zu ‰ndern
+		// Muss aufgerufen werden, um den Hintergrund zu √§ndern
 		setOpaque(true);
 		
-		// Wurde das Element ausgew‰hlt?
+		// Wurde das Element ausgew√§hlt?
 		if (isSelected) {
 			setForeground(UIManager.getColor("List.selectionForeground"));
 			setBackground(UIManager.getColor("List.seelctionBackground"));
