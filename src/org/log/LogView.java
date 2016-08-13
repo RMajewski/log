@@ -103,8 +103,19 @@ public class LogView extends JInternalFrame
 	
 	/**
 	 * Initialisiert das Fenster und zeigt es an.
+	 * 
+	 * @deprecated Wird durch {@link #LogView(String)} ersetzt. 
 	 */
 	public LogView() {
+		this(new String());
+	}
+	
+	/**
+	 * Initialisiert das Fenster.
+	 * 
+	 * @param begin Name der Packages, in dem die eigenen Klassen sich befinden.
+	 */
+	public LogView(String begin) {
 		super();
 		
 		// Fenstergröße und Fenster-Titel
@@ -164,7 +175,7 @@ public class LogView extends JInternalFrame
 		// Text-Feld für die Fehlerbeschreibung
 		_txtError = new JEditorPane();
 		_txtError.setEditable(false);
-		_txtError.setEditorKitForContentType("text", new LogEditorKit());
+		_txtError.setEditorKitForContentType("text", new LogEditorKit("begin"));
 		_txtError.setContentType("text");
 		_txtError.setBackground(Color.BLACK);
 		split.setRightComponent(new JScrollPane(_txtError));

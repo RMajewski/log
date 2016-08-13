@@ -1,9 +1,9 @@
 /* 
-* Copyright 2016 RenÈ Majewski
+* Copyright 2016 Ren√© Majewski
 *  
 * Lizenziert unter der EUPL, Version 1.1 oder - sobald diese von der
-* Europ‰ischen Kommission genehmigt wurden - Folgeversionen der EUPL
-* ("Lizenz"); Sie d¸rfen dieses Werk ausschlieﬂlich gem‰ﬂ dieser Lizenz
+* Europ√§ischen Kommission genehmigt wurden - Folgeversionen der EUPL
+* ("Lizenz"); Sie d√ºrfen dieses Werk ausschlie√ülich gem√§√ü dieser Lizenz
 * nutzen. 
 * 
 * Eine Kopie der Lizenz finden Sie hier: 
@@ -11,9 +11,9 @@
 *  
 * Sofern nicht durch anwendbare Rechtsvorschriften gefordert oder in 
 * schriftlicher Form vereinbart, wird die unter der Lizenz verbreitete 
-* Software "so wie sie ist", OHNE JEGLICHE GEWƒHRLEISTUNG ODER BEDINGUNGEN -
-* ausdr¸cklich oder stillschweigend - verbreitet.
-* Die sprachspezifischen Genehmigungen und Beschr‰nkungen unter der Lizenz
+* Software "so wie sie ist", OHNE JEGLICHE GEW√ÑHRLEISTUNG ODER BEDINGUNGEN -
+* ausdr√ºcklich oder stillschweigend - verbreitet.
+* Die sprachspezifischen Genehmigungen und Beschr√§nkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
 */ 
 
@@ -25,9 +25,15 @@ import javax.swing.text.StyledEditorKit;
 /**
  * Erstellt das Dokument zum highlighten.
  * 
- * @author RenÈ Majewski
+ * @author Ren√© Majewski
+ *
+ * @version 0.2
+ * Im Konstruktor wird nun das Package √ºbergeben, in dem sich die eigenen
+ * Klassen befinden.
  *
  * @version 0.1
+ * Highlighten der verschiedenen Fehlerklassen.
+ * 
  * @since 0.1
  */
 public class LogEditorKit extends StyledEditorKit {
@@ -35,6 +41,20 @@ public class LogEditorKit extends StyledEditorKit {
 	 * Serial ID
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Speichert, in welchem Package sich die eigenen Klassen befinden.
+	 */
+	private String _begin;
+	
+	/**
+	 * Initialisiert das Dokument.
+	 * 
+	 * @param begin Name des Packges, wo die eigenen Klassen sich befinden.
+	 */
+	public LogEditorKit(String begin) {
+		_begin = begin;
+	}
 
 	/**
 	 * Erstellt das Dokument, welches die Fehlerbeschreibung highlightet.
@@ -116,8 +136,7 @@ public class LogEditorKit extends StyledEditorKit {
 		syntax.addException("org.omg.CORBA.SystemException");		
 		
 		// Eigene Klassen
-		syntax.addClassName(System.getProperty("log.className"),
-				ErrorSyntax.DEFAULT_CLASSES);
+		syntax.addClassName(_begin, ErrorSyntax.DEFAULT_CLASSES);
 		
 		return syntax;
 	}
