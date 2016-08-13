@@ -129,10 +129,8 @@ public class StatusBar extends JPanel {
 	 * @param message Text, der angezeigt werden soll.
 	 */
 	public void setMessage(String message) {
-		_label.setText(message);
-		setBackground(LogData.COLOR_NONE);
-		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(new LogData(message, null));
+		setLabelText(message, LogData.NONE);
 	}
 	
 	/**
@@ -146,10 +144,8 @@ public class StatusBar extends JPanel {
 	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefügt werden soll
 	 */
 	public void setMessage(String message, String error) {
-		_label.setText(message);
-		setBackground(LogData.COLOR_NONE);
-		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(new LogData(message, error));
+		setLabelText(message, LogData.NONE);
 	}
 	
 	/**
@@ -164,10 +160,8 @@ public class StatusBar extends JPanel {
 	 * soll.
 	 */
 	public void setMessage(String message, Exception error) {
-		_label.setText(message);
-		setBackground(LogData.COLOR_NONE);
-		_label.setForeground(LogData.FCOLOR_NONE);
 		_list.add(LogData.message(message, error));
+		setLabelText(message, LogData.NONE);
 	}
 	
 	/**
@@ -184,12 +178,8 @@ public class StatusBar extends JPanel {
 	 *  {@link org.log.LogData}.
 	 */
 	public void setMessage(String message, String error, short out) {
-		if (out > LogData.NO_OUT) {
-			_label.setText(message);
-			setBackground(LogData.getBackground(out));
-			_label.setForeground(LogData.getForeground(out));
-		}
 		_list.add(new LogData(message, error, out));
+		setLabelText(message, out);
 	}
 	
 	/**
@@ -207,12 +197,8 @@ public class StatusBar extends JPanel {
 	 *  {@link org.log.LogData}.
 	 */
 	public void setMessage(String message, Exception error, short out) {
-		if (out > LogData.NO_OUT) {
-			_label.setText(message);
-			setBackground(LogData.getBackground(out));
-			_label.setForeground(LogData.getForeground(out));
-		}
 		_list.add(LogData.message(message, error, out));
+		setLabelText(message, out);
 	}
 	
 	/**
@@ -224,12 +210,8 @@ public class StatusBar extends JPanel {
 	 * @param log Log-Eintrag, der gespeichert und ausgegeben werden soll.
 	 */
 	public void setMessage(LogData log) {
-		if (log.getOut() > LogData.NO_OUT) {
-			_label.setText(log.getMessage());
-			setBackground(LogData.getBackground(log.getOut()));
-			_label.setForeground(LogData.getForeground(log.getOut()));
-		}
 		_list.add(log);
+		setLabelText(log.getMessage(), log.getOut());
 	}
 	
 	/**
@@ -306,9 +288,35 @@ public class StatusBar extends JPanel {
 	/**
 	 * Speichert die Log-Einträge in eine Datei
 	 * 
-	 * @param name Name der Log-Datei.
+	 * @param file Ausgewählte Datei.
+	 */
+	public void writeToFile(File file) {
+		LogView.writeToFile(file);
+	}
+	
+	/**
+	 * Speichert die Log-Einträge in eine Datei
+	 * 
+	 * @param name Name der Datei.
 	 */
 	public void writeToFile(String name) {
-		LogView.writeToFile(new File(name));
+		writeToFile(new File(name));
+	}
+	
+	/**
+	 * Schreibt die Message in das Label der StatusBar. Bevor der Text angezeigt
+	 * wird, wird geprüft, ob der Nachrichten-Type überhaupt ausgegeben werden
+	 * soll.
+	 * 
+	 * @param message Nachricht, die im Label angezeigt werden soll.
+	 * 
+	 * @param type Type der Nachricht.
+	 */
+	private void setLabelText(String message, short type) {
+		if (LogConfig.getInstance().getMessageTypeOut(type)) {
+			_label.setText(message);
+			setBackground(LogData.getBackground(type));
+			_label.setForeground(LogData.getForeground(type));
+		}
 	}
 }
