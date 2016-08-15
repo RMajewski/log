@@ -20,13 +20,22 @@
 package org.log;
 
 import java.awt.Color;
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * Speichert die Daten für eine Log-Nachricht.
  * 
  * @author René Majewski
+ * 
+ * @version 0.2
+ * Die Vergleichs-Methode equals wurde hinzugefügt. Neue Nachrichten-Typen:
+ * DATABASE_ERROR und DATABASE_INSERT.
  *
  * @version 0.1
+ * Setzen und zurückgeben der Nachrichten. Folgende Nachrichten-Type wurde
+ * hinzugefügt: NO_OUT, NONE, ERROR, WARNING, OK, INFO
+ * 
  * @since 0.1
  */
 public class LogData {
@@ -76,9 +85,19 @@ public class LogData {
 	public static final short OK = 4;
 	
 	/**
-	 * Gibt an, dass die Nachricht einen Information ist.
+	 * Gibt an, dass die Nachricht eine Information ist.
 	 */
 	public static final short INFO = 5;
+	
+	/**
+	 * Gibt an, dass beim Zugriff auf die Datenbank ein Fehler aufgetreten ist.
+	 */
+	public static final short DATABASE_ERROR = 6;
+	
+	/**
+	 * Gibt an, dass etwas in die Datenbank eingefügt wurde.
+	 */
+	public static final short DATABASE_INSERT = 7;
 	
 	/**
 	 * Speichert die Farbe für eine Fehler
@@ -106,6 +125,16 @@ public class LogData {
 	public static final Color COLOR_INFO = Color.BLUE;
 	
 	/**
+	 * Speichert die Hintergrundfarbe für einen Datenbank-Fehler.
+	 */
+	public static final Color COLOR_DATABASE_ERROR = Color.RED;
+	
+	/**
+	 * Speichert die Hintergrundfarbe für die Datenbank-Nachricht
+	 */
+	public static final Color COLOR_DATABASE_INSERT = Color.LIGHT_GRAY;
+	
+	/**
 	 * Speichert die Schrift-Farbe für einen Fehler.
 	 */
 	public static final Color FCOLOR_ERROR = Color.WHITE;
@@ -131,8 +160,19 @@ public class LogData {
 	public static final Color FCOLOR_INFO = Color.CYAN;
 	
 	/**
+	 * Speichert die Schrift-Farbe für ein Datenbank-Fehler.
+	 */
+	public static final Color FCOLOR_DATABASE_ERROR = Color.BLUE;
+	
+	/**
+	 * Speichert die Schrift-Farbe für ein Datenbank-Nachricht.
+	 */
+	public static final Color FCOLOR_DATABASE_INSERT = Color.BLUE;
+	
+	/**
 	 * Initialisiert die Nachricht ohne Daten.
 	 */
+	// OPT this(null, null, NO_OUT) aufrufen
 	public LogData() {
 		setMessage(null);
 		setError(null);
@@ -147,6 +187,7 @@ public class LogData {
 	 * 
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 */
+	// OPT this(message, error, NONE) aufrufen
 	public LogData(String message, String error) {
 		setMessage(message);
 		setError(error);
@@ -443,6 +484,60 @@ public class LogData {
 	}
 	
 	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Datenbank-Fehler.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageDatabaseError(String message, String error) {
+		return new LogData(message, error, DATABASE_ERROR);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Datenbank-Fehler.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehler, der aufgetreten ist.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageDatabaseError(String message,
+			Exception error) {
+		return new LogData(message, createError(error), DATABASE_ERROR);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Datenbank-Nachricht.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageDatabaseInsert(String message, String error) {
+		return new LogData(message, error, DATABASE_INSERT);
+	}
+	
+	/**
+	 * Erzeugt eine neue Nachricht und markiert sie als Datenbank-Nachricht.
+	 * 
+	 * @param message Nachricht, die gespeichert werden soll.
+	 * 
+	 * @param error Fehler, der aufgetreten ist.
+	 * 
+	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 */
+	public static LogData messageDatabaseInsert(String message,
+			Exception error) {
+		return new LogData(message, createError(error), DATABASE_INSERT);
+	}
+	
+	/**
 	 * Ermittelt aus dem angegeben Wert die Hintergrund-Farbe.
 	 * 
 	 * @param out Als was soll die Nachricht dargestellt werden?
@@ -475,6 +570,12 @@ public class LogData {
 				
 			case LogData.INFO:
 				return LogData.COLOR_INFO;
+				
+			case LogData.DATABASE_ERROR:
+				return LogData.COLOR_DATABASE_ERROR;
+				
+			case LogData.DATABASE_INSERT:
+				return LogData.COLOR_DATABASE_INSERT;
 		}
 		
 		return LogData.COLOR_NONE;
@@ -500,6 +601,12 @@ public class LogData {
 				
 			case LogData.INFO:
 				return LogData.FCOLOR_INFO;
+				
+			case LogData.DATABASE_ERROR:
+				return LogData.FCOLOR_DATABASE_ERROR;
+				
+			case LogData.DATABASE_INSERT:
+				return LogData.FCOLOR_DATABASE_INSERT;
 		}
 		
 		return LogData.FCOLOR_NONE;
@@ -512,5 +619,79 @@ public class LogData {
 	 */
 	public long getCreateTime() {
 		return _create;
+	}
+	
+	/**
+	 * Überprüft, das übergebene Objekt, ob es gleich mit diesem ist.
+	 * 
+	 * Wenn obj == null ist, wird false zurückgegeben. Wenn obj == this ist,
+	 * wird true zurückgegeben. Wenn obj keine Data-Klasse ist, so wird false
+	 * zurückgegeben. Wenn die ID dieses Datensatzes und des übergebenen
+	 * Objektes gleich ist, wird true zurückgegeben.
+	 * 
+	 * @param obj Objekt, was mit diesem hier verglichen werden soll.
+	 * 
+	 * @return Ist das übergebene Objekt gleich diesem? Wenn ja, wird true
+	 * zurückgegeben. Wenn nein, false.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+			return false;
+		
+		if (obj == this)
+			return true;
+		
+		if (!getClass().equals(obj.getClass()))
+			return false;
+		
+		LogData data = (LogData)obj;
+		return (_message.equals(data.getMessage()) && 
+				_error.equals(data.getError()) && (_out == data.getOut()));
+	}
+	
+	/**
+	 * Erstellt eine Zeichenkette, in der alle Daten dieser Klasse vorkommen.
+	 * 
+	 * @return Zeichenkette mit allen Daten
+	 */
+	@Override
+	public String toString() {
+		String type = new String();
+		switch (_out) {
+			case NO_OUT:
+				type = "NO_OUT";
+				break;
+				
+			case NONE:
+				type = "NONE";
+				break;
+				
+			case ERROR:
+				type = "ERROR";
+				break;
+				
+			case WARNING:
+				type = "WARNING";
+				break;
+				
+			case OK:
+				type = "OK";
+				break;
+				
+			case INFO:
+				type = "INFO";
+				break;
+				
+			case DATABASE_ERROR:
+				type = "DATABASE_ERROR";
+				break;
+		}
+		
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
+				DateFormat.SHORT);
+		
+		return "['" + type + "', '" + _message + "', ''" + _error + "', '" + 
+				df.format(new Date(_create)) + "']";
 	}
 }

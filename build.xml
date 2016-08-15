@@ -1,22 +1,25 @@
-<?xml version="1.0"?><!--Ant-Setup-Datei für das Projekt "Inventur"-->
+<?xml version="1.0"?>
+<!--Ant-Setup-Datei für das Projekt "Logbuch"-->
 <project name="Log" default="main" basedir=".">
 	<!-- Task laden -->
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 			 classpath="${user.home}/.ant/lib/ant-contrib-1.0b3.jar" />
 	
-	<!-- Version -->
-	<property name="version" value="0.3.0" />
-	
 	<!-- Build-Nummer laden -->
-	<var name="build" value="no" />
-	<target name="buildnumber">
+	<property name="version.file" location=".version"/>
+	<property name="version.header">!!!Dies ist eine automatisch generierte Datei - es dürfen keine Änderungen vorgenommen werden !!!${file.separator}#In dieser Datei stehen die Versions-Informationen für das Inventar-Plugin Gewicht.</property>
+	<include file="ant/version.xml"/>
+	<var name="version.buildnumber" value="no" />
+	<target name="build">
 		<if>
-			<equals arg1="${build}" arg2="no" />
+			<equals arg1="${version.buildnumber}" arg2="no" />
 			<then>
-				<description>Lädt die Build-Nummer</description>
-				<buildnumber file=".buildnumber" />
-				<property name="jar.plugin" value="log-${version}-b${build.number}.jar" />
-				<var name="build" value="yes" />
+				<antcall target="version.version" />
+				<property file="${version.file}" />
+				<property name="version" value="${version.major}.${version.minor}.${version.patch}" />
+				<property name="version.full" value="${version}-b${version.build}" />
+				<property name="jar.plugin" value="log-${version.full}.jar" />
+				<var name="version.buildnumber" value="yes" />
 			</then>
 		</if>
 	</target>
@@ -72,7 +75,7 @@
 	</target>
 	
 	<!--Kompelieren-->
-	<target name="compile" depends="clean, makedir">
+	<target name="compile" depends="clean, makedir, build">
 		<javac destdir="${build.dir}"
 			   classpathref="build.classpath"
 			   includeantruntime="false"
@@ -84,7 +87,7 @@
 	</target>
 	
 	<!--Jars erzeugen-->
-	<target name="inventur" depends="buildnumber, compile">
+	<target name="log" depends="build, compile">
 		<jar destfile="${dist.dir}/${jar.plugin}">
 			<fileset dir="${build.dir}" >
 				<include name="**/log/*.class" />
@@ -102,7 +105,7 @@
 					<attribute name="Specification-Version" value="${version}" />
 					<attribute name="Specification-Verndor" value="René Majewski" />
 					<attribute name="Implementation-Title" value="org.log" />
-					<attribute name="Implementation-Version" value="${version}-b${build.number}" />
+					<attribute name="Implementation-Version" value="${version.full}" />
 					<attribute name="Implementation-Vendor" value="René Majewski" />
 				</section>
 			</manifest>
@@ -110,7 +113,7 @@
 	</target>
 	
 	<!-- Main -->
-	<target name="main" depends="inventur">
+	<target name="main" depends="log">
 		<description>Kompeliert die einzelnen Klasse und erstellt die
 		JAR-Datei.</description>
 	</target>

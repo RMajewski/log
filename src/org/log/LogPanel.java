@@ -78,6 +78,16 @@ public class LogPanel extends JPanel {
 	private JCheckBox _cbInformation;
 	
 	/**
+	 * Ausgabe der Meldung {@link LogData#DATABASE_ERROR} in der StatusBar?
+	 */
+	private JCheckBox _cbDbError;
+	
+	/**
+	 * Ausgabe der Meldung {@link LogData#DATABASE_INSERT} in der StatusBar?
+	 */
+	private JCheckBox _cbDbInsert;
+	
+	/**
 	 * Soll das Logbuch-Menü angezeigt werden?
 	 */
 	private JCheckBox _cbMenu;
@@ -137,6 +147,16 @@ public class LogPanel extends JPanel {
 		_cbInformation = new JCheckBox("Informationen");
 		_cbInformation.setSelected(config.getMessageTypeOut(LogData.INFO));
 		panel.add(_cbInformation);
+		
+		_cbDbError = new JCheckBox("Datenbank-Fehler");
+		_cbDbError.setSelected(config.getMessageTypeOut(
+				LogData.DATABASE_ERROR));
+		panel.add(_cbDbError);
+		
+		_cbDbInsert = new JCheckBox("Datenbank-Nachricht");
+		_cbDbInsert.setSelected(config.getMessageTypeOut(
+				LogData.DATABASE_INSERT));
+		panel.add(_cbDbInsert);
 		
 		// Panel für die Mitte
 		panel = new JPanel();

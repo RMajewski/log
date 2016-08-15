@@ -83,6 +83,8 @@ public class LogConfig {
 		_messagesOut.put(LogData.WARNING, true);
 		_messagesOut.put(LogData.OK, true);
 		_messagesOut.put(LogData.INFO, true);
+		_messagesOut.put(LogData.DATABASE_ERROR, true);
+		_messagesOut.put(LogData.DATABASE_INSERT, true);
 		
 		_showMenu = true;
 		

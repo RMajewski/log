@@ -124,6 +124,14 @@ public class TestLogData {
 	}
 	
 	/**
+	 * Testet die Konstante {@link org.log.LogData#DATABASE}.
+	 */
+	@Test
+	public void testDatabase() {
+		assertEquals(6, LogData.DATABASE);
+	}
+	
+	/**
 	 * Testet die Konstante {@link org.log.LogData#COLOR_ERROR}.
 	 */
 	@Test
@@ -324,6 +332,18 @@ public class TestLogData {
 	}
 	
 	/**
+	 * Testet die Methode {@link org.log.LogData#messageDatabase(String, Exception)}.
+	 */
+	@Test
+	public void testMessageDatabase() {
+		_data = LogData.messageDatabase(_message, _error);
+		
+		assertEquals(_message, _data.getMessage());
+		assertEquals(_error, _data.getError());
+		assertEquals(LogData.DATABASE, _data.getOut());
+	}
+	
+	/**
 	 * Testet die Methode {@link org.log.LogData#message(String, Exception)}.
 	 */
 	@Test
@@ -436,6 +456,22 @@ public class TestLogData {
 	}
 	
 	/**
+	 * Testet die Methode {@link org.log.LogData#messageDatabase(String, Exception)}.
+	 */
+	@Test
+	public void testMessageDatabaseStackTrace() {
+		Exception exception = new Exception();
+		
+		_data = LogData.messageDatabase(_message, exception);
+		
+		String error = LogData.createError(exception);
+		
+		assertEquals(_message, _data.getMessage());
+		assertEquals(error, _data.getError());
+		assertEquals(LogData.DATABASE, _data.getOut());
+	}
+	
+	/**
 	 * Testet die Methode {@link org.log.LogData#createError(Exception)}.
 	 */
 	@Test
@@ -520,5 +556,14 @@ public class TestLogData {
 	@Test
 	public void testGetColorInformation() {
 		assertEquals(LogData.COLOR_INFO, LogData.getBackground(LogData.INFO));
+	}
+	
+	/**
+	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 */
+	@Test
+	public void testGetColorDatabase() {
+		assertEquals(LogData.COLOR_DATABASE,
+				LogData.getBackground(LogData.DATABASE));
 	}
 }
