@@ -279,6 +279,9 @@ public class LogData {
 	 * @return Erstellt Fehler-Nachricht.
 	 */
 	public static String createError(Exception error) {
+		if (error == null)
+			return new String();
+		
 		String result = error.getClass().getName();
 		
 		if ((error.getMessage() != null) && !error.getMessage().isEmpty())
