@@ -19,6 +19,7 @@
 
 package org.log.config;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,6 +34,10 @@ import org.log.elements.StatusBar;
  * In dieser Klasse werden die Einstellungen für das Logbuch gespeichert.
  * 
  * @author René Majewski
+ * 
+ * @version 0.2.1
+ * Es können jetzt auch die Text- und Hintergrundfarben der einzelnen
+ * Nachrichten-Typen in der Konfiguration gespeichert werden.
  * 
  * @version 0.2
  * Speichern der einzelnen Konfigurationen in Properties. {@code load()} und
@@ -86,6 +91,20 @@ public class LogConfig {
 	 */
 	public static final String PROPERTY_SHOW_MESSAGE =
 			"Log.property.message.show.";
+	
+	/**
+	 * Speichert das Suffix der Einstellung, um die Textfarbe der einzelnen
+	 * Nachrichten-Typen zu speichern.
+	 */
+	public static final String PROPERTY_FCOLOR_MESSAGE =
+			"Log.property.message.fcolor.";
+	
+	/**
+	 * Speichert das Suffix der Einstellung, um die Hintergrundfarbe der
+	 * einzelnen Nachrichten-Typen zu speichern.
+	 */
+	public static final String PROPERTY_BCOLOR_MESSAGE =
+			"Log.property.message.bcolor";
 	
 	/**
 	 * Speichert die Instanz dieser Klasse.
@@ -322,6 +341,60 @@ public class LogConfig {
 	public void setMessageTypeOut(short type, boolean out) {
 		_properties.setProperty(PROPERTY_SHOW_MESSAGE + String.valueOf(type),
 				String.valueOf(out));
+	}
+	
+	/**
+	 * Gibt die Textfarbe der angegebenen Nachricht zurück.
+	 * 
+	 * @param type Nachrichten-Type, dessen Textfarbe ermittelt werden soll.
+	 * 
+	 * @return Textfarbe für den angegebenen Nachrichten-Type.
+	 */
+	public Color getForeground(short type) {
+		int rgb = Integer.valueOf(_properties.getProperty(
+				PROPERTY_FCOLOR_MESSAGE + String.valueOf(type), String.valueOf(
+						LogData.getForeground(type).getRGB())));
+		return new Color(rgb);
+	}
+	
+	/**
+	 * Speichert die Textfarbe der angegebenen Nachricht.
+	 * 
+	 * @param type Nachrichten-Type, dessen Textfarbe gespeichert werden soll.
+	 * 
+	 * @param color Neue Textfarbe für den Nachrichten-Type
+	 */
+	public void setForeground(short type, Color color) {
+		_properties.setProperty(PROPERTY_FCOLOR_MESSAGE + String.valueOf(type),
+				String.valueOf(color.getRGB()));
+	}
+	
+	/**
+	 * Gibt die Hintergrundfarbe der angegebenen zurück.
+	 * 
+	 * @param type Nachrichten-Type, dessen Hintergrundfarbe zurückgegeben
+	 * werden soll.
+	 * 
+	 * @return Hintergrundfarbe für den angegebenen Nachrichten-Type.
+	 */
+	public Color getBackground(short type) {
+		int rgb = Integer.valueOf(_properties.getProperty(
+				PROPERTY_BCOLOR_MESSAGE + String.valueOf(type), String.valueOf(
+						LogData.getBackground(type).getRGB())));
+		return new Color(rgb);
+	}
+	
+	/**
+	 * Speichert die Hintergrundfarbe der angegebenen Nachricht.
+	 * 
+	 * @param type Nachrichten-Type, dessen Hintergrundfarbe gespeichert werden
+	 * soll.
+	 * 
+	 * @param color Neue Hintergrundfarbe für den Nachrichten-Type.
+	 */
+	public void setBackground(short type, Color color) {
+		_properties.setProperty(PROPERTY_BCOLOR_MESSAGE + String.valueOf(type),
+				String.valueOf(color.getRGB()));
 	}
 	
 	/**

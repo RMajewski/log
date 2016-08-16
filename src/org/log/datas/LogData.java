@@ -28,6 +28,11 @@ import java.util.Date;
  * 
  * @author René Majewski
  * 
+ * @version 0.3
+ * Es wurden den Nachrichten Namen vergeben. Diese können mit
+ * {@link #getMessageName(short)} ermittelt. Aus den Namen kann auch der
+ * Nachrichten-Typ mit {@link #getMessageType(String)} ermittelt werden.
+ * 
  * @version 0.2
  * Die Vergleichs-Methode equals wurde hinzugefügt. Neue Nachrichten-Typen:
  * DATABASE_ERROR und DATABASE_INSERT.
@@ -58,6 +63,46 @@ public class LogData {
 	 * Speichert wann die Nachricht erstellt wurde als Timestamp.
 	 */
 	private long _create;
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #NO_OUT} an.
+	 */
+	private static final String NAME_NO_OUT = "Nicht ausgebare Nachricht";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #NONE} an.
+	 */
+	private static final String NAME_NONE = "Normale Nachricht";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #ERROR} an.
+	 */
+	private static final String NAME_ERROR = "Fehlermeldung";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #WARNING} an.
+	 */
+	private static final String NAME_WARNING = "Warnung";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #OK} an.
+	 */
+	private static final String NAME_OK = "Erfolgsnachricht";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #INFO} an.
+	 */
+	private static final String NAME_INFO = "Information";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #DATABASE_ERROR} an.
+	 */
+	private static final String NAME_DATABASE_ERROR = "Datenbank-Fehler";
+	
+	/**
+	 * Gibt den Namen für die Nachricht {@link #DATABASE_INSERT} an.
+	 */
+	private static final String NAME_DATABASE_INSERT = "Datenbank-Nachricht";
 	
 	/**
 	 * Gibt an, dass die Nachricht nicht ausgegeben werden soll.
@@ -214,7 +259,7 @@ public class LogData {
 	/**
 	 * Gibt die gespeicherte Nachricht zurück.
 	 * 
-	 * @return Nchricht, die gespeichert ist.
+	 * @return Nachricht, die gespeichert ist.
 	 */
 	public String getMessage() {
 		return _message;
@@ -660,41 +705,95 @@ public class LogData {
 	 */
 	@Override
 	public String toString() {
-		String type = new String();
-		switch (_out) {
-			case NO_OUT:
-				type = "NO_OUT";
-				break;
-				
-			case NONE:
-				type = "NONE";
-				break;
-				
-			case ERROR:
-				type = "ERROR";
-				break;
-				
-			case WARNING:
-				type = "WARNING";
-				break;
-				
-			case OK:
-				type = "OK";
-				break;
-				
-			case INFO:
-				type = "INFO";
-				break;
-				
-			case DATABASE_ERROR:
-				type = "DATABASE_ERROR";
-				break;
-		}
-		
 		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
 				DateFormat.SHORT);
 		
-		return "['" + type + "', '" + _message + "', ''" + _error + "', '" + 
-				df.format(new Date(_create)) + "']";
+		return "['" + getMessageName(_out) + "', '" + _message + "', ''" +
+				_error + "', '" + df.format(new Date(_create)) + "']";
+	}
+	
+	/**
+	 * Ermittelt anhand des Nachrichten-Types den Namen der Nachricht.
+	 * 
+	 * @param type Nachrichten-Type, dessen Name ermittelt werden soll.
+	 * 
+	 * @return Ermittelter Name der Nachricht. Wurde der Name nicht gefunden, so
+	 * wird eine leere Zeichenkette zurückgegeben.
+	 */
+	public static String getMessageName(short type) {
+		switch (type) {
+			case NO_OUT:
+				return NAME_NO_OUT;
+				
+			case NONE:
+				return NAME_NONE;
+		
+			case ERROR:
+				return NAME_ERROR;
+				
+			case WARNING:
+				return NAME_WARNING;
+				
+			case OK:
+				return NAME_OK;
+				
+			case INFO:
+				return NAME_INFO;
+				
+			case DATABASE_ERROR:
+				return NAME_DATABASE_ERROR;
+				
+			case DATABASE_INSERT:
+				return NAME_DATABASE_INSERT;
+		}
+		
+		return new String();
+	}
+	
+	/**
+	 * Ermittelt anhand des Namens der Nachricht, den Nachrichten-Typ.
+	 * 
+	 * @param name Name der Nachricht, dessen Typ ermittelt werden soll.
+	 * 
+	 * @return Ermittelter Typ der Nachricht. Konnte kein Type ermittelt werden,
+	 * so wird -1 zurückgegeben.
+	 */
+	public static short getMessageType(String name) {
+		switch(name) {
+			case NAME_NO_OUT:
+				return NO_OUT;
+				
+			case NAME_NONE:
+				return NONE;
+				
+			case NAME_ERROR:
+				return ERROR;
+				
+			case NAME_WARNING:
+				return WARNING;
+				
+			case NAME_OK:
+				return OK;
+				
+			case NAME_INFO:
+				return INFO;
+				
+			case NAME_DATABASE_ERROR:
+				return DATABASE_ERROR;
+				
+			case NAME_DATABASE_INSERT:
+				return DATABASE_INSERT;
+		}
+		
+		return -1;
+	}
+	
+	/**
+	 * Ermittelt die Anzahl der Nachrichten-Typen.
+	 * 
+	 * @return Anzahl der Nachrichten-Typen. 
+	 */
+	public static short getTypesCount() {
+		return DATABASE_INSERT;
 	}
 }

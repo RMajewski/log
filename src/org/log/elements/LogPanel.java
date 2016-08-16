@@ -127,36 +127,38 @@ public class LogPanel extends JPanel {
 				"Meldungen in der Statusbar anzeigen?"));
 		add(panel);
 		
-		_cbNoOut = new JCheckBox("Nicht ausgebare Nachricht");
+		_cbNoOut = new JCheckBox(LogData.getMessageName(LogData.NO_OUT));
 		_cbNoOut.setSelected(config.getMessageTypeOut(LogData.NO_OUT));
 		panel.add(_cbNoOut);
 		
-		_cbNone = new JCheckBox("Normale Nachricht");
+		_cbNone = new JCheckBox(LogData.getMessageName(LogData.NONE));
 		_cbNone.setSelected(config.getMessageTypeOut(LogData.NONE));
 		panel.add(_cbNone);
 		
-		_cbError = new JCheckBox("Fehler");
+		_cbError = new JCheckBox(LogData.getMessageName(LogData.ERROR));
 		_cbError.setSelected(config.getMessageTypeOut(LogData.ERROR));
 		panel.add(_cbError);
 		
-		_cbWarning = new JCheckBox("Warnung");
+		_cbWarning = new JCheckBox(LogData.getMessageName(LogData.WARNING));
 		_cbWarning.setSelected(config.getMessageTypeOut(LogData.WARNING));
 		panel.add(_cbWarning);
 		
-		_cbOk = new JCheckBox("Erfolgsnachricht");
+		_cbOk = new JCheckBox(LogData.getMessageName(LogData.OK));
 		_cbOk.setSelected(config.getMessageTypeOut(LogData.OK));
 		panel.add(_cbOk);
 		
-		_cbInformation = new JCheckBox("Informationen");
+		_cbInformation = new JCheckBox(LogData.getMessageName(LogData.INFO));
 		_cbInformation.setSelected(config.getMessageTypeOut(LogData.INFO));
 		panel.add(_cbInformation);
 		
-		_cbDbError = new JCheckBox("Datenbank-Fehler");
+		_cbDbError = new JCheckBox(LogData.getMessageName(
+				LogData.DATABASE_ERROR));
 		_cbDbError.setSelected(config.getMessageTypeOut(
 				LogData.DATABASE_ERROR));
 		panel.add(_cbDbError);
 		
-		_cbDbInsert = new JCheckBox("Datenbank-Nachricht");
+		_cbDbInsert = new JCheckBox(LogData.getMessageName(
+				LogData.DATABASE_INSERT));
 		_cbDbInsert.setSelected(config.getMessageTypeOut(
 				LogData.DATABASE_INSERT));
 		panel.add(_cbDbInsert);
