@@ -211,6 +211,10 @@ public class LogPanel extends JPanel {
 		config.setMessageTypeOut(LogData.ERROR, _cbError.isSelected());
 		config.setMessageTypeOut(LogData.OK, _cbOk.isSelected());
 		config.setMessageTypeOut(LogData.INFO, _cbInformation.isSelected());
+		config.setMessageTypeOut(LogData.DATABASE_ERROR,
+				_cbDbError.isSelected());
+		config.setMessageTypeOut(LogData.DATABASE_INSERT,
+				_cbDbInsert.isSelected());
 		
 		// Automatische Speicherung
 		config.setAutoSave(_cbAutoSave.isSelected());

@@ -124,11 +124,11 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#DATABASE}.
+	 * Testet die Konstante {@link org.log.LogData#DATABASE_ERROR}.
 	 */
 	@Test
 	public void testDatabase() {
-		assertEquals(6, LogData.DATABASE);
+		assertEquals(6, LogData.DATABASE_ERROR);
 	}
 	
 	/**
@@ -336,11 +336,11 @@ public class TestLogData {
 	 */
 	@Test
 	public void testMessageDatabase() {
-		_data = LogData.messageDatabase(_message, _error);
+		_data = LogData.messageDatabaseError(_message, _error);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(_error, _data.getError());
-		assertEquals(LogData.DATABASE, _data.getOut());
+		assertEquals(LogData.DATABASE_ERROR, _data.getOut());
 	}
 	
 	/**
@@ -462,13 +462,13 @@ public class TestLogData {
 	public void testMessageDatabaseStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogData.messageDatabase(_message, exception);
+		_data = LogData.messageDatabaseError(_message, exception);
 		
 		String error = LogData.createError(exception);
 		
 		assertEquals(_message, _data.getMessage());
 		assertEquals(error, _data.getError());
-		assertEquals(LogData.DATABASE, _data.getOut());
+		assertEquals(LogData.DATABASE_ERROR, _data.getOut());
 	}
 	
 	/**
@@ -563,7 +563,7 @@ public class TestLogData {
 	 */
 	@Test
 	public void testGetColorDatabase() {
-		assertEquals(LogData.COLOR_DATABASE,
-				LogData.getBackground(LogData.DATABASE));
+		assertEquals(LogData.COLOR_DATABASE_ERROR,
+				LogData.getBackground(LogData.DATABASE_ERROR));
 	}
 }
