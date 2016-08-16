@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.datas;
 
 import java.awt.Color;
 import java.text.DateFormat;

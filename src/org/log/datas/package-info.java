@@ -18,11 +18,10 @@
 */
 
 /**
- * In diesem Package werde alle Klassen vom Log-System zusammengefasst.
+ * In diesem Package werden alle Daten-Klassen zusammengefasst.
  * 
  * @author René Majewski
  *
- * @version 0.1
- * @since 0.1
+ * @since 0.4
  */
-package org.log;
+package org.log.datas;

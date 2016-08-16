@@ -15,50 +15,13 @@
 * ausdrücklich oder stillschweigend - verbreitet.
 * Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
-*/ 
-
-package org.log;
-
-import java.awt.GridLayout;
-
-import javax.swing.JColorChooser;
-import javax.swing.JPanel;
+*/
 
 /**
- * Gibt Steuerelemente für die Einstellungen der Farben zurück.
+ * In diesem Package werden alle Renderer-Klassen zusammengefasst.
  * 
  * @author René Majewski
  *
- * @version 0.1
- * 
- * @since 0.1
+ * @since 0.4
  */
-public class LogPanelColor extends JPanel {
-	/**
-	 * Serial ID
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Speichern der Farbauswahl
-	 */
-	private JColorChooser _color;
-	
-	
-	/**
-	 * Initialisiert das Panel mit seinen Steuerelementen.
-	 */
-	public LogPanelColor() {
-		super(false);
-		setLayout(new GridLayout(1, 2));
-		
-		LogConfig config = LogConfig.getInstance();
-	}
-
-	/**
-	 * Speichert die Einstellungen in der Konfiguration ab.
-	 */
-	public void writeToConfig() {
-		
-	}
-}
+package org.log.renderer;

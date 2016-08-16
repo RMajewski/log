@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.config;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +25,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
+
+import org.log.datas.LogData;
+import org.log.elements.StatusBar;
 
 /**
  * In dieser Klasse werden die Einstellungen für das Logbuch gespeichert.

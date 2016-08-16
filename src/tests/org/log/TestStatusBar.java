@@ -24,8 +24,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
-import org.log.LogData;
-import org.log.StatusBar;
+import org.log.datas.LogData;
+import org.log.elements.StatusBar;
 
 /**
  * @author René Majewski
@@ -56,7 +56,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.StatusBar#getInstance()}.
+	 * Testet die Methode {@link org.log.elements.StatusBar#getInstance()}.
 	 */
 	@Test
 	public void testGetInstance() {
@@ -66,7 +66,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.StatusBar#setMessage(java.lang.String)}.
+	 * Testet die Methode {@link org.log.elements.StatusBar#setMessage(java.lang.String)}.
 	 */
 	@Test
 	public void testSetMessageString() {
@@ -85,7 +85,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Test method for {@link org.log.StatusBar#setMessage(java.lang.String, java.lang.String)}.
+	 * Test method for {@link org.log.elements.StatusBar#setMessage(java.lang.String, java.lang.String)}.
 	 */
 	@Test
 	public void testSetMessageStringString() {
@@ -105,7 +105,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Test method for {@link org.log.StatusBar#setMessage(java.lang.String, java.lang.Exception)}.
+	 * Test method for {@link org.log.elements.StatusBar#setMessage(java.lang.String, java.lang.Exception)}.
 	 */
 	@Test
 	public void testSetMessageStringException() {
@@ -126,7 +126,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Test method for {@link org.log.StatusBar#setMessage(java.lang.String, java.lang.String, short)}.
+	 * Test method for {@link org.log.elements.StatusBar#setMessage(java.lang.String, java.lang.String, short)}.
 	 */
 	@Test
 	public void testSetMessageStringStringShort() {
@@ -146,7 +146,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Test method for {@link org.log.StatusBar#setMessage(java.lang.String, java.lang.Exception, short)}.
+	 * Test method for {@link org.log.elements.StatusBar#setMessage(java.lang.String, java.lang.Exception, short)}.
 	 */
 	@Test
 	public void testSetMessageStringExceptionShort() {
@@ -167,7 +167,7 @@ public class TestStatusBar {
 	}
 
 	/**
-	 * Test method for {@link org.log.StatusBar#setMessage(org.log.LogData)}.
+	 * Test method for {@link org.log.elements.StatusBar#setMessage(org.log.datas.LogData)}.
 	 */
 	@Test
 	public void testSetMessageLogData() {
@@ -187,7 +187,7 @@ public class TestStatusBar {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.StatusBar#getLog()}.
+	 * Testet die Methode {@link org.log.elements.StatusBar#getLog()}.
 	 */
 	@Test
 	public void testGetLog() {

@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.elements.editor;
 
 import javax.swing.text.Document;
 import javax.swing.text.StyledEditorKit;

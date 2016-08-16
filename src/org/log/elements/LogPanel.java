@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.elements;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -28,6 +28,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.log.config.LogConfig;
+import org.log.datas.LogData;
 
 /**
  * Gibt die Steuerelemente für die Einstellungen des Logbuch zurück.

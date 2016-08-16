@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -51,6 +51,11 @@ import javax.swing.JSplitPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.log.datas.LogData;
+import org.log.elements.StatusBar;
+import org.log.elements.editor.LogEditorKit;
+import org.log.renderer.LogViewListRenderer;
 
 /**
  * In diesem Fenster wird das Log angezeigt.

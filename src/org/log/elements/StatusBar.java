@@ -17,7 +17,7 @@
 * sind dem Lizenztext zu entnehmen.
 */ 
 
-package org.log;
+package org.log.elements;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,6 +30,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.border.BevelBorder;
+
+import org.log.config.LogConfig;
+import org.log.datas.LogData;
+import org.log.windows.LogView;
 
 /**
  * Zeigt die StatusBar an.
@@ -175,7 +179,7 @@ public class StatusBar extends JPanel {
 	 *  @param error Fehlerbeschreibung, die dem Eintrag hinzugefügt werden soll
 	 *  
 	 *  @param out Als was soll die Nachricht markiert werden? Siehe
-	 *  {@link org.log.LogData}.
+	 *  {@link org.log.datas.LogData}.
 	 */
 	public void setMessage(String message, String error, short out) {
 		_list.add(new LogData(message, error, out));
@@ -194,7 +198,7 @@ public class StatusBar extends JPanel {
 	 * soll.
 	 *  
 	 *  @param out Als was soll die Nachricht markiert werden? Siehe
-	 *  {@link org.log.LogData}.
+	 *  {@link org.log.datas.LogData}.
 	 */
 	public void setMessage(String message, Exception error, short out) {
 		_list.add(LogData.message(message, error, out));

@@ -25,10 +25,10 @@ import java.awt.Color;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.log.LogData;
+import org.log.datas.LogData;
 
 /**
- * Testet die Klasse {@link org.log.LogData}.
+ * Testet die Klasse {@link org.log.datas.LogData}.
  * 
  * @author René Majewski
  *
@@ -76,7 +76,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#NO_OUT}.
+	 * Testet die Konstante {@link org.log.datas.LogData#NO_OUT}.
 	 */
 	@Test
 	public void testNoOut() {
@@ -84,7 +84,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#ERROR}.
+	 * Testet die Konstante {@link org.log.datas.LogData#ERROR}.
 	 */
 	@Test
 	public void testError() {
@@ -92,7 +92,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#WARNING}.
+	 * Testet die Konstante {@link org.log.datas.LogData#WARNING}.
 	 */
 	@Test
 	public void testWarning() {
@@ -100,7 +100,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#NONE}.
+	 * Testet die Konstante {@link org.log.datas.LogData#NONE}.
 	 */
 	@Test
 	public void testNone() {
@@ -108,7 +108,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#OK}.
+	 * Testet die Konstante {@link org.log.datas.LogData#OK}.
 	 */
 	@Test
 	public void testOk() {
@@ -116,7 +116,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#INFO}.
+	 * Testet die Konstante {@link org.log.datas.LogData#INFO}.
 	 */
 	@Test
 	public void testInfo() {
@@ -124,7 +124,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#DATABASE_ERROR}.
+	 * Testet die Konstante {@link org.log.datas.LogData#DATABASE_ERROR}.
 	 */
 	@Test
 	public void testDatabase() {
@@ -132,7 +132,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#COLOR_ERROR}.
+	 * Testet die Konstante {@link org.log.datas.LogData#COLOR_ERROR}.
 	 */
 	@Test
 	public void testColorError() {
@@ -140,7 +140,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#COLOR_WARNING}.
+	 * Testet die Konstante {@link org.log.datas.LogData#COLOR_WARNING}.
 	 */
 	@Test
 	public void testColorWarning() {
@@ -148,7 +148,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#COLOR_NONE}.
+	 * Testet die Konstante {@link org.log.datas.LogData#COLOR_NONE}.
 	 */
 	@Test
 	public void testColorNone() {
@@ -156,7 +156,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#COLOR_OK}.
+	 * Testet die Konstante {@link org.log.datas.LogData#COLOR_OK}.
 	 */
 	@Test
 	public void testColorOk() {
@@ -164,7 +164,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Konstante {@link org.log.LogData#COLOR_INFO}.
+	 * Testet die Konstante {@link org.log.datas.LogData#COLOR_INFO}.
 	 */
 	@Test
 	public void testColorInfo() {
@@ -172,7 +172,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#LogData()}.
+	 * Testet die Methode {@link org.log.datas.LogData#LogData()}.
 	 */
 	@Test
 	public void testLogData() {
@@ -183,7 +183,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#LogData(java.lang.String, java.lang.String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#LogData(java.lang.String, java.lang.String)}.
 	 */
 	@Test
 	public void testLogDataStringString() {
@@ -193,7 +193,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#LogData(java.lang.String, java.lang.String, short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#LogData(java.lang.String, java.lang.String, short)}.
 	 */
 	@Test
 	public void testLogDataStringStringShort() {
@@ -204,7 +204,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#getMessage()}.
+	 * Testet die Methode {@link org.log.datas.LogData#getMessage()}.
 	 */
 	@Test
 	public void testGetMessage() {
@@ -212,7 +212,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#setMessage(java.lang.String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#setMessage(java.lang.String)}.
 	 */
 	@Test
 	public void testSetMessage() {
@@ -221,7 +221,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#getError()}.
+	 * Testet die Methode {@link org.log.datas.LogData#getError()}.
 	 */
 	@Test
 	public void testGetError() {
@@ -229,7 +229,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#setError(java.lang.String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#setError(java.lang.String)}.
 	 */
 	@Test
 	public void testSetError() {
@@ -238,7 +238,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#getOut()}.
+	 * Testet die Methode {@link org.log.datas.LogData#getOut()}.
 	 */
 	@Test
 	public void testGetOut() {
@@ -246,7 +246,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#setOut(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#setOut(short)}.
 	 */
 	@Test
 	public void testSetOut() {
@@ -255,7 +255,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#message(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, String)}.
 	 */
 	@Test
 	public void testMessage() {
@@ -266,7 +266,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#message(String, String, short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, String, short)}.
 	 */
 	@Test
 	public void testMessageOut() {
@@ -277,7 +277,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageError(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageError(String, String)}.
 	 */
 	@Test
 	public void testMessageError() {
@@ -288,7 +288,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageWarning(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageWarning(String, String)}.
 	 */
 	@Test
 	public void testMessageWarning() {
@@ -299,7 +299,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageNoOut(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageNoOut(String, String)}.
 	 */
 	@Test
 	public void testMessageNoOut() {
@@ -310,7 +310,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageOk(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageOk(String, String)}.
 	 */
 	@Test
 	public void testMessageOk() {
@@ -321,7 +321,7 @@ public class TestLogData {
 	}
 
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageInformation(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageInformation(String, String)}.
 	 */
 	@Test
 	public void testMessageInfo() {
@@ -332,7 +332,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageDatabase(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabase(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabase() {
@@ -344,7 +344,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#message(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, Exception)}.
 	 */
 	@Test
 	public void testMessageStackTrace() {
@@ -360,7 +360,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#message(String, Exception, short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, Exception, short)}.
 	 */
 	@Test
 	public void testMessageStackTraceOut() {
@@ -376,7 +376,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageError(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageError(String, Exception)}.
 	 */
 	@Test
 	public void testMessageErrorStackTrace() {
@@ -392,7 +392,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageWarning(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageWarning(String, Exception)}.
 	 */
 	@Test
 	public void testMessageWarningStackTrace() {
@@ -408,7 +408,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageNoOut(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageNoOut(String, Exception)}.
 	 */
 	@Test
 	public void testMessageNoOutStackTrace() {
@@ -424,7 +424,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageOk(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageOk(String, Exception)}.
 	 */
 	@Test
 	public void testMessageOkStackTrace() {
@@ -440,7 +440,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageInformation(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageInformation(String, Exception)}.
 	 */
 	@Test
 	public void testMessageInfoStackTrace() {
@@ -456,7 +456,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#messageDatabase(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabase(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabaseStackTrace() {
@@ -472,7 +472,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#createError(Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#createError(Exception)}.
 	 */
 	@Test
 	public void testCreateErrorWithoutErrorMessage() {
@@ -491,7 +491,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#createError(Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#createError(Exception)}.
 	 */
 	@Test
 	public void testCreateErrorWithErrorMessage() {
@@ -511,7 +511,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorNoOut() {
@@ -519,7 +519,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorError() {
@@ -527,7 +527,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorWarning() {
@@ -535,7 +535,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorNone() {
@@ -543,7 +543,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorOk() {
@@ -551,7 +551,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorInformation() {
@@ -559,7 +559,7 @@ public class TestLogData {
 	}
 	
 	/**
-	 * Testet die Methode {@link org.log.LogData#getBackground(short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#getBackground(short)}.
 	 */
 	@Test
 	public void testGetColorDatabase() {
