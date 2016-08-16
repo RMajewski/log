@@ -90,11 +90,11 @@
 	<target name="log" depends="build, compile">
 		<jar destfile="${dist.dir}/${jar.plugin}">
 			<fileset dir="${build.dir}" >
-				<include name="**/log/*.class" />
-				<exclude name="**/Test*.class" />
+				<include name="**/log/**/*.class" />
+				<exclude name="**/tests/**/*.class" />
 			</fileset>
 			<fileset dir="${src.dir}">
-				<include name="**/log/*.java" />
+				<include name="**/log/**/*.java" />
 				<exclude name="**/tests/**/*.java" />
 			</fileset>
 			<manifest>

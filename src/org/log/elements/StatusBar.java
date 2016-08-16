@@ -41,8 +41,14 @@ import org.log.windows.LogView;
  * Der letzte Log-Eintrag wird in der Status-Bar angezeigt, sofern er nicht als
  * "nicht ausgeben" markiert wurde.
  * 
- * Version 0.2: Es kann wahlweise das Label mit den Nachrichten angezeigt werden
- * oder eine Fortschrittsanzeige.
+ * Version 0.3
+ * Farben werden aus der {@link org.log.config.LogConfig} entnommen.
+ * 
+ * Version 0.2
+ * Es ist auf der rechten Seite eine Fortschrittsanzeige dazu gekommen.
+ * 
+ * @version 0.1
+ * Anzeigen der Nachricht.
  * 
  * @author René Majewski
  *
@@ -223,8 +229,9 @@ public class StatusBar extends JPanel {
 	 */
 	public void clear() {
 		_label.setText(new String());
-		setBackground(LogData.getBackground(LogData.NONE));
-		_label.setForeground(LogData.getForeground(LogData.NONE));
+		setBackground(LogConfig.getInstance().getBackground(LogData.NONE));
+		_label.setForeground(LogConfig.getInstance().getForeground(
+				LogData.NONE));
 		_list.clear();
 		_progress.setValue(0);
 	}
@@ -319,8 +326,8 @@ public class StatusBar extends JPanel {
 	private void setLabelText(String message, short type) {
 		if (LogConfig.getInstance().getMessageTypeOut(type)) {
 			_label.setText(message);
-			setBackground(LogData.getBackground(type));
-			_label.setForeground(LogData.getForeground(type));
+			setBackground(LogConfig.getInstance().getBackground(type));
+			_label.setForeground(LogConfig.getInstance().getForeground(type));
 		}
 	}
 }

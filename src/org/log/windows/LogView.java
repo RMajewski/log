@@ -60,13 +60,15 @@ import org.log.renderer.LogViewListRenderer;
 /**
  * In diesem Fenster wird das Log angezeigt.
  * 
- * Wenn auf ein Element der List mit Log-Nachrichten geklickt wird, wird die
+ * Wenn auf ein Element der Liste mit Log-Nachrichten geklickt wird, wird die
  * Fehlermeldung angezeigt, sofern sie vorhanden ist. Die Fehlermeldungen können
  * in die Zwischenablage kopiert und / oder gespeichert werden.
  * 
  * @author René Majewski
  *
  * @version 0.1
+ * Auswahl einer Nachricht und Anzeigen und formatieren des Fehlerberichts.
+ * 
  * @since 0.1
  */
 public class LogView extends JInternalFrame

@@ -26,6 +26,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
+import org.log.config.LogConfig;
 import org.log.datas.LogData;
 
 /**
@@ -33,7 +34,12 @@ import org.log.datas.LogData;
  * 
  * @author René Majewski
  *
+ * @version 0.2
+ * Farben werden aus der {@link org.log.config.LogConfig} übernommen.
+ * 
  * @version 0.1
+ * Formatieren und anzeigen der Nachrichten.
+ * 
  * @since 0.1
  */
 public class LogViewListRenderer extends JLabel
@@ -61,8 +67,10 @@ public class LogViewListRenderer extends JLabel
 			setForeground(UIManager.getColor("List.selectionForeground"));
 			setBackground(UIManager.getColor("List.seelctionBackground"));
 		} else {
-			setForeground(LogData.getForeground(value.getOut()));
-			setBackground(LogData.getBackground(value.getOut()));
+			setForeground(LogConfig.getInstance().getForeground(
+					value.getOut()));
+			setBackground(LogConfig.getInstance().getBackground(
+					value.getOut()));
 		}
 		
 		return this;
