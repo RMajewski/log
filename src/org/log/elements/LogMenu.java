@@ -117,7 +117,7 @@ public class LogMenu extends JMenu implements ActionListener {
 		}
 		
 		else if(ae.getActionCommand().equals(SHOW)) {
-			_desktop.add(new LogView(LogConfig.getInstance().getPackageName()));
+			_desktop.add(new LogView());
 		}
 	}
 }

@@ -27,6 +27,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import org.log.config.LogConfig;
@@ -109,7 +111,7 @@ public class LogPanel extends JPanel {
 	/**
 	 * Name des Packages für die eigenen Klassen.
 	 */
-	private JTextField _txtPackage;
+	private JTextArea _txtPackage;
 
 	/**
 	 * Initialisiert die Steuerelemente.
@@ -197,10 +199,21 @@ public class LogPanel extends JPanel {
 		pan2.setLayout(new BorderLayout());
 		panel.add(pan2);
 		
-		pan2.add(new JLabel("Package der eigenen Klassen"), BorderLayout.WEST);
-		_txtPackage = new JTextField();
-		_txtPackage.setText(config.getPackageName());
-		pan2.add(_txtPackage, BorderLayout.CENTER);
+		pan2.add(new JLabel("Package der eigenen Klassen (pro Zeile nur ein " +
+				"Eintrag)"), BorderLayout.NORTH);
+		
+		String tmp[] = config.getPackageName().split(";");
+		String area = new String();
+		for (int i = 0; i < tmp.length; i++) {
+			if (i > 0)
+				area += "\n";
+			area += tmp[i];
+		}
+		
+		_txtPackage = new JTextArea(area);
+		_txtPackage.setWrapStyleWord(true);
+		_txtPackage.setLineWrap(true);
+		pan2.add(new JScrollPane(_txtPackage), BorderLayout.CENTER);
 	}
 	
 	/**
@@ -229,6 +242,6 @@ public class LogPanel extends JPanel {
 		config.setShowMenu(_cbMenu.isSelected());
 		
 		// Name des Packages für eigene Klassen
-		config.setPackageName(_txtPackage.getText());
+		config.setPackageName(_txtPackage.getText().replaceAll("\n", ";"));
 	}
 }

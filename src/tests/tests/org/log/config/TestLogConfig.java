@@ -954,6 +954,19 @@ public class TestLogConfig {
 	}
 
 	/**
+	 * Testet, ob die Einstellung für das eigene Package gesetzt werden kann.
+	 * 
+	 * @see org.log.config.LogConfig#setPackageName(java.lang.String)
+	 */
+	@Test
+	public void testSetPackageNameWithPackagesInParameter() {
+		String test ="test.test;test2.test2;test3";
+		_config.setPackageName(test);
+		
+		assertThat(_config.getPackageName(), is(test));
+	}
+
+	/**
 	 * Testet, ob der Fehler IllegalArgumentException ausgelöst wird, wenn null
 	 * als Argument übergeben wird.
 	 * 
@@ -973,5 +986,16 @@ public class TestLogConfig {
 	@Test(expected=IllegalArgumentException.class)
 	public void testSetPackageNameWithEmptyStringAsParameter() {
 		_config.setPackageName(new String());
+	}
+	
+	/**
+	 * Testet, ob der Fehler IllegalArgumentException ausgelöst wird, wenn eine
+	 * leere Zeichenkette als Parameter übergeben wird.
+	 * 
+	 * @see org.log.config.LogConfig#setPackageName(java.lang.String)
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetPackageNameWithSpaceInParameter() {
+		_config.setPackageName("test test.test");
 	}
 }

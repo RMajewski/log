@@ -22,10 +22,16 @@ package org.log.elements.editor;
 import javax.swing.text.Document;
 import javax.swing.text.StyledEditorKit;
 
+import org.log.config.LogConfig;
+
 /**
  * Erstellt das Dokument zum highlighten.
  * 
  * @author René Majewski
+ *
+ * @version 0.3
+ * Der Parameter im Konstruktor ist nun überflüssig, da die Daten in der
+ * {@link org.log.config.LogConfig} stehen.
  *
  * @version 0.2
  * Im Konstruktor wird nun das Package übergeben, in dem sich die eigenen
@@ -44,16 +50,29 @@ public class LogEditorKit extends StyledEditorKit {
 	
 	/**
 	 * Speichert, in welchem Package sich die eigenen Klassen befinden.
+	 * 
+	 * @deprecated Bestandteil von {@link org.log.config.LogConfig}
 	 */
+	@SuppressWarnings("unused")
 	private String _begin;
 	
 	/**
 	 * Initialisiert das Dokument.
 	 * 
 	 * @param begin Name des Packges, wo die eigenen Klassen sich befinden.
+	 * 
+	 * @deprecated Der Parameter begin ist jetzt überflüssig, da die Daten
+	 * in der {@link org.log.config.LogConfig} stehen.
 	 */
 	public LogEditorKit(String begin) {
 		_begin = begin;
+	}
+	
+	/**
+	 * Initialisiert das Dokument.
+	 */
+	public LogEditorKit() {
+		super();
 	}
 
 	/**
@@ -136,7 +155,9 @@ public class LogEditorKit extends StyledEditorKit {
 		syntax.addException("org.omg.CORBA.SystemException");		
 		
 		// Eigene Klassen
-		syntax.addClassName(_begin, ErrorSyntax.DEFAULT_CLASSES);
+		String[] tmp = LogConfig.getInstance().getPackageName().split(";");
+		for (int i = 0; i < tmp.length; i++)
+			syntax.addClassName(tmp[i], ErrorSyntax.DEFAULT_CLASSES);
 		
 		return syntax;
 	}

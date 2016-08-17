@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import org.log.datas.LogData;
 import org.log.elements.StatusBar;
@@ -419,12 +420,17 @@ public class LogConfig {
 	/**
 	 * Speichert den Package-Namen der eigenen Klassen.
 	 * 
-	 * @param name Name des Packages der eigenen Klassen.
+	 * @param name Name des Packages der eigenen Klassen. Wenn mehrere Packages
+	 * angegeben werden, müssen diese mit einem ";" getrennt werden.
 	 */
 	public void setPackageName(String name) {
 		if ((name == null) || name.isEmpty())
 			throw new IllegalArgumentException(
 					"Der übergebene Package-Name muss angegeben werden.");
+		
+		if (Pattern.compile("([^\\w\\.;])").matcher(name).find())
+			throw new IllegalArgumentException("Es dürfen nur Buchstaben, " +
+					"Zahlen, Punkte und Simikolons verwendet werden.");
 		
 		_properties.setProperty(PROPERTY_PACKAGE_NAME, name);
 	}
