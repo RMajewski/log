@@ -357,6 +357,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch {@link LogDataFactory#message(String, String)}
+	 * ersetzt.
 	 */
 	public static LogData message(String message, String error) {
 		return new LogData(message, error, NONE);
@@ -370,6 +373,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch {@link LogDataFactory#message(String, Exception)}
+	 * ersetzt.
 	 */
 	public static LogData message(String message, Exception error) {
 		return new LogData(message, createError(error), NONE);
@@ -385,6 +391,9 @@ public class LogData {
 	 * @param out Markierung der Nachricht.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#message(String, String, short)} ersetzt.
 	 */
 	public static LogData message(String message, String error, short out) {
 		return new LogData(message, error, out);
@@ -400,6 +409,9 @@ public class LogData {
 	 * @param out Markierung der Nachricht.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#message(String, Exception, short)} ersetzt.
 	 */
 	public static LogData message(String message, Exception error, short out) {
 		return new LogData(message, createError(error), out);
@@ -414,6 +426,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageNoOut(String, String)} ersetzt.
 	 */
 	public static LogData messageNoOut(String message, String error) {
 		return new LogData(message, error, NO_OUT);
@@ -428,6 +443,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Angaben.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageNoOut(String, Exception)} ersetzt.
 	 */
 	public static LogData messageNoOut(String message, Exception error) {
 		return new LogData(message, createError(error), NO_OUT);
@@ -441,6 +459,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageError(String, String)} ersetzt.
 	 */
 	public static LogData messageError(String message, String error) {
 		return new LogData(message, error, ERROR);
@@ -454,6 +475,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageError(String, Exception)} ersetzt.
 	 */
 	public static LogData messageError(String message, Exception error) {
 		return new LogData(message, createError(error), ERROR);
@@ -467,6 +491,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageWarning(String, String)} ersetzt.
 	 */
 	public static LogData messageWarning(String message, String error) {
 		return new LogData(message, error, WARNING);
@@ -480,6 +507,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageWarning(String, Exception)} ersetzt.
 	 */
 	public static LogData messageWarning(String message, Exception error) {
 		return new LogData(message, createError(error), WARNING);
@@ -493,6 +523,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageOk(String, String)} ersetzt.
 	 */
 	public static LogData messageOk(String message, String error) {
 		return new LogData(message, error, OK);
@@ -506,6 +539,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageOk(String, Exception)} ersetzt.
 	 */
 	public static LogData messageOk(String message, Exception error) {
 		return new LogData(message, createError(error), OK);
@@ -519,6 +555,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageInfo(String, String)} ersetzt.
 	 */
 	public static LogData messageInformation(String message, String error) {
 		return new LogData(message, error, INFO);
@@ -532,6 +571,9 @@ public class LogData {
 	 * @param error Trace-Array, um die Fehlermeldung zu erzeugen.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageInfo(String, Exception)} ersetzt.
 	 */
 	public static LogData messageInformation(String message, Exception error) {
 		return new LogData(message, createError(error), INFO);
@@ -545,6 +587,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageDatabaseError(String, String)} ersetzt.
 	 */
 	public static LogData messageDatabaseError(String message, String error) {
 		return new LogData(message, error, DATABASE_ERROR);
@@ -558,6 +603,9 @@ public class LogData {
 	 * @param error Fehler, der aufgetreten ist.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageDatabaseError(String, Exception)} ersetzt.
 	 */
 	public static LogData messageDatabaseError(String message,
 			Exception error) {
@@ -572,6 +620,9 @@ public class LogData {
 	 * @param error Fehlerbeschreibung, die gespeichert werden soll.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageDatabaseInsert(String, String)} ersetzt.
 	 */
 	public static LogData messageDatabaseInsert(String message, String error) {
 		return new LogData(message, error, DATABASE_INSERT);
@@ -585,6 +636,9 @@ public class LogData {
 	 * @param error Fehler, der aufgetreten ist.
 	 * 
 	 * @return Erzeugte Nachricht mit den angegebenen Daten.
+	 * 
+	 * @deprecated Wird durch
+	 * {@link LogDataFactory#messageDatabaseInsert(String, Exception)} ersetzt.
 	 */
 	public static LogData messageDatabaseInsert(String message,
 			Exception error) {

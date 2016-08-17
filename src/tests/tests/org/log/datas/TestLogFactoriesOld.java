@@ -25,16 +25,18 @@ import static org.hamcrest.Matchers.is;
 import org.junit.Before;
 import org.junit.Test;
 import org.log.datas.LogData;
-import org.log.datas.LogDataFactory;
 
 /**
- * Testet die Factory-Methoden der Klasse {@link org.log.datas.LogDataFactory}.
+ * Testet die Factory-Methoden der Klasse {@link org.log.datas.LogData}.
  * 
  * @author René Majewski
  *
  * @since 0.4
+ * 
+ * @deprecated Die Factory-Methoden wurden in Klasse
+ * {@link org.log.datas.LogDataFactory} verschoben.
  */
-public class TestLogFactories {
+public class TestLogFactoriesOld {
 	/**
 	 * Speichert die erstelle Nachricht.
 	 */
@@ -63,12 +65,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#message(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, String)}.
 	 */
 	@Test
 	public void testMessage() {
-		_data = LogDataFactory.message(_message, _error);
+		_data = LogData.message(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -76,12 +77,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#message(String, String, short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, String, short)}.
 	 */
 	@Test
 	public void testMessageOut() {
-		_data = LogDataFactory.message(_message, _error, LogData.WARNING);
+		_data = LogData.message(_message, _error, LogData.WARNING);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -89,12 +89,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageError(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageError(String, String)}.
 	 */
 	@Test
 	public void testMessageError() {
-		_data = LogDataFactory.messageError(_message, _error);
+		_data = LogData.messageError(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -102,12 +101,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageWarning(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageWarning(String, String)}.
 	 */
 	@Test
 	public void testMessageWarning() {
-		_data = LogDataFactory.messageWarning(_message, _error);
+		_data = LogData.messageWarning(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -115,12 +113,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Method
-	 * {@link org.log.datas.LogDataFactory#messageNoOut(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageNoOut(String, String)}.
 	 */
 	@Test
 	public void testMessageNoOut() {
-		_data = LogDataFactory.messageNoOut(_message, _error);
+		_data = LogData.messageNoOut(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -128,12 +125,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageOk(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageOk(String, String)}.
 	 */
 	@Test
 	public void testMessageOk() {
-		_data = LogDataFactory.messageOk(_message, _error);
+		_data = LogData.messageOk(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -141,12 +137,11 @@ public class TestLogFactories {
 	}
 
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageInfo(String, String)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageInformation(String, String)}.
 	 */
 	@Test
 	public void testMessageInfo() {
-		_data = LogDataFactory.messageInfo(_message, _error);
+		_data = LogData.messageInformation(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -154,12 +149,11 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageDatabaseError(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabaseError(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabaseError() {
-		_data = LogDataFactory.messageDatabaseError(_message, _error);
+		_data = LogData.messageDatabaseError(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -167,12 +161,11 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageDatabaseInsert(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabaseInsert(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabaseInsert() {
-		_data = LogDataFactory.messageDatabaseInsert(_message, _error);
+		_data = LogData.messageDatabaseInsert(_message, _error);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(_error));
@@ -180,13 +173,12 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#message(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, Exception)}.
 	 */
 	@Test
 	public void testMessageStackTrace() {
 		Exception exception = new Exception();
-		_data = LogDataFactory.message(_message, exception);
+		_data = LogData.message(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -194,14 +186,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#message(String, Exception, short)}.
+	 * Testet die Methode {@link org.log.datas.LogData#message(String, Exception, short)}.
 	 */
 	@Test
 	public void testMessageStackTraceOut() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.message(_message, exception, LogData.WARNING);
+		_data = LogData.message(_message, exception, LogData.WARNING);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -209,14 +200,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageError(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageError(String, Exception)}.
 	 */
 	@Test
 	public void testMessageErrorStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageError(_message, exception);
+		_data = LogData.messageError(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -224,14 +214,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageWarning(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageWarning(String, Exception)}.
 	 */
 	@Test
 	public void testMessageWarningStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageWarning(_message, exception);
+		_data = LogData.messageWarning(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -239,14 +228,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageNoOut(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageNoOut(String, Exception)}.
 	 */
 	@Test
 	public void testMessageNoOutStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageNoOut(_message, exception);
+		_data = LogData.messageNoOut(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -254,14 +242,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageOk(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageOk(String, Exception)}.
 	 */
 	@Test
 	public void testMessageOkStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageOk(_message, exception);
+		_data = LogData.messageOk(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -269,14 +256,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageInfo(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageInformation(String, Exception)}.
 	 */
 	@Test
 	public void testMessageInfoStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageInfo(_message, exception);
+		_data = LogData.messageInformation(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -284,14 +270,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode
-	 * {@link org.log.datas.LogDataFactory#messageDatabaseError(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabaseError(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabaseErrorStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageDatabaseError(_message, exception);
+		_data = LogData.messageDatabaseError(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));
@@ -299,14 +284,13 @@ public class TestLogFactories {
 	}
 	
 	/**
-	 * Testet die Methode 
-	 * {@link org.log.datas.LogDataFactory#messageDatabaseInsert(String, Exception)}.
+	 * Testet die Methode {@link org.log.datas.LogData#messageDatabaseInsert(String, Exception)}.
 	 */
 	@Test
 	public void testMessageDatabaseInsertStackTrace() {
 		Exception exception = new Exception();
 		
-		_data = LogDataFactory.messageDatabaseInsert(_message, exception);
+		_data = LogData.messageDatabaseInsert(_message, exception);
 		
 		assertThat(_data.getMessage(), is(_message));
 		assertThat(_data.getError(), is(LogData.createError(exception)));

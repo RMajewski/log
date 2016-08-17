@@ -86,6 +86,7 @@
 			   encoding="UTF-8"> <!-- Wichtig für Windows -->
 			<src path="${src.dir}"/>
 			<exclude name="**/package-info.java"/>
+			<compilerarg value="-Xlint"/>
 		</javac>
 	</target>
 	

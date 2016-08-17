@@ -33,6 +33,7 @@ import javax.swing.border.BevelBorder;
 
 import org.log.config.LogConfig;
 import org.log.datas.LogData;
+import org.log.datas.LogDataFactory;
 import org.log.windows.LogView;
 
 /**
@@ -170,7 +171,7 @@ public class StatusBar extends JPanel {
 	 * soll.
 	 */
 	public void setMessage(String message, Exception error) {
-		_list.add(LogData.message(message, error));
+		_list.add(LogDataFactory.message(message, error));
 		setLabelText(message, LogData.NONE);
 	}
 	
@@ -207,7 +208,7 @@ public class StatusBar extends JPanel {
 	 *  {@link org.log.datas.LogData}.
 	 */
 	public void setMessage(String message, Exception error, short out) {
-		_list.add(LogData.message(message, error, out));
+		_list.add(LogDataFactory.message(message, error, out));
 		setLabelText(message, out);
 	}
 	

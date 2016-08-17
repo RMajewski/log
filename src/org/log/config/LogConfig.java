@@ -29,6 +29,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 import org.log.datas.LogData;
+import org.log.datas.LogDataFactory;
 import org.log.elements.StatusBar;
 import org.log.exceptions.NoLogTypeException;
 
@@ -201,7 +202,7 @@ public class LogConfig {
 			fos = new FileOutputStream(path + File.separator + FILE_PROPERTIES);
 			_properties.storeToXML(fos, comment, "UTF-8");
 		} catch (IOException e) {
-			StatusBar.getInstance().setMessage(LogData.messageError(
+			StatusBar.getInstance().setMessage(LogDataFactory.messageError(
 					"Fehler beim speichern der Einstellungen des " +
 					"Logbuch-Systems.", e));
 		} finally {
@@ -226,7 +227,7 @@ public class LogConfig {
 			fis = new FileInputStream(path + File.separator + FILE_PROPERTIES);
 			_properties.loadFromXML(fis);
 		} catch (IOException e) {
-			StatusBar.getInstance().setMessage(LogData.messageError(
+			StatusBar.getInstance().setMessage(LogDataFactory.messageError(
 					"Fehler beim laden der Einstellungen des Logbuch-System.",
 					e));
 		} finally {
