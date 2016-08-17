@@ -23,6 +23,8 @@ import java.awt.Color;
 import java.text.DateFormat;
 import java.util.Date;
 
+import org.log.exceptions.NoLogTypeException;
+
 /**
  * Speichert die Daten für eine Log-Nachricht.
  * 
@@ -67,42 +69,42 @@ public class LogData {
 	/**
 	 * Gibt den Namen für die Nachricht {@link #NO_OUT} an.
 	 */
-	private static final String NAME_NO_OUT = "Nicht ausgebare Nachricht";
+	public static final String NAME_NO_OUT = "Nicht ausgebare Nachricht";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #NONE} an.
 	 */
-	private static final String NAME_NONE = "Normale Nachricht";
+	public static final String NAME_NONE = "Normale Nachricht";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #ERROR} an.
 	 */
-	private static final String NAME_ERROR = "Fehlermeldung";
+	public static final String NAME_ERROR = "Fehlermeldung";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #WARNING} an.
 	 */
-	private static final String NAME_WARNING = "Warnung";
+	public static final String NAME_WARNING = "Warnung";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #OK} an.
 	 */
-	private static final String NAME_OK = "Erfolgsnachricht";
+	public static final String NAME_OK = "Erfolgsnachricht";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #INFO} an.
 	 */
-	private static final String NAME_INFO = "Information";
+	public static final String NAME_INFO = "Information";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #DATABASE_ERROR} an.
 	 */
-	private static final String NAME_DATABASE_ERROR = "Datenbank-Fehler";
+	public static final String NAME_DATABASE_ERROR = "Datenbank-Fehler";
 	
 	/**
 	 * Gibt den Namen für die Nachricht {@link #DATABASE_INSERT} an.
 	 */
-	private static final String NAME_DATABASE_INSERT = "Datenbank-Nachricht";
+	public static final String NAME_DATABASE_INSERT = "Datenbank-Nachricht";
 	
 	/**
 	 * Gibt an, dass die Nachricht nicht ausgegeben werden soll.
@@ -219,7 +221,7 @@ public class LogData {
 	 */
 	// OPT this(null, null, NO_OUT) aufrufen
 	public LogData() {
-		setMessage(null);
+		_message = new String();
 		setError(null);
 		setOut(NO_OUT);
 		_create = System.currentTimeMillis();
@@ -271,10 +273,11 @@ public class LogData {
 	 * @param message Nachricht, die gespeichert werden soll. 
 	 */
 	public void setMessage(String message) {
-		if (message != null)
-			_message = message;
-		else
-			_message = new String();
+		if ((message == null) || message.isEmpty())
+			throw new IllegalArgumentException(
+					"Die Nachricht muss angegeben werden.");
+		
+		_message = message;
 	}
 
 	/**
@@ -313,6 +316,9 @@ public class LogData {
 	 * @param out Wie soll die Nachricht dargestellt werden?
 	 */
 	public void setOut(short out) {
+		if ((out < 0) || (out > getTypesCount()))
+			throw new NoLogTypeException();
+		
 		_out = out;
 	}
 	
@@ -708,7 +714,7 @@ public class LogData {
 		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT,
 				DateFormat.SHORT);
 		
-		return "['" + getMessageName(_out) + "', '" + _message + "', ''" +
+		return "['" + getMessageName(_out) + "', '" + _message + "', '" +
 				_error + "', '" + df.format(new Date(_create)) + "']";
 	}
 	

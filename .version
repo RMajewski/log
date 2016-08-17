@@ -1,5 +1,5 @@
 #!!!Dies ist eine automatisch generierte Datei - es dürfen keine Änderungen vorgenommen werden !!!\#In dieser Datei stehen die Versions-Informationen für das Logbuch-System.
-#Wed, 17 Aug 2016 09:35:57 +0200
+#Wed, 17 Aug 2016 15:01:35 +0200
 #!!!Dies ist eine automatisch generierte Datei - es dürfen keine Änderungen vorgenommen werden !!!\#In dieser Datei stehen die Versions-Informationen für das Inventar-Plugin Gewicht.
 #Wed, 17 Aug 2016 09:28:41 +0200
 #!!!Dies ist eine automatisch generierte Datei - es dï¿½rfen keine ï¿½nderungen vorgenommen werden !!!\#In dieser Datei stehen die Versions-Informationen fï¿½r das Inventar-Plugin Gewicht.
@@ -10,5 +10,5 @@
 version.major=0
 version.minor=3
 version.patch=0
-version.build=38
-version.date=2016/08/17 09\:35
+version.build=44
+version.date=2016/08/17 15\:01

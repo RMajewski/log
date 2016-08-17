@@ -78,7 +78,7 @@
 	</target>
 	
 	<!--Kompelieren-->
-	<target name="compile" depends="clean, makedir, build">
+	<target name="compile" depends="clean, makedir">
 		<javac destdir="${build.dir}"
 			   classpathref="build.classpath"
 			   includeantruntime="false"
