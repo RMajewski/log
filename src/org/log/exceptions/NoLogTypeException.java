@@ -15,14 +15,36 @@
 * ausdrücklich oder stillschweigend - verbreitet.
 * Die sprachspezifischen Genehmigungen und Beschränkungen unter der Lizenz
 * sind dem Lizenztext zu entnehmen.
-*/
+*/ 
+
+package org.log.exceptions;
 
 /**
- * In diesem Package werden alle Tests für das Logbuch bereitgestellt.
+ * Tritt auf, wenn ein Typ kein Nachrichten-Type ist.
  * 
  * @author René Majewski
  *
- * @version 0.1
- * @since 0.1
+ * @since 0.4
  */
-package tests.org.log;
+public class NoLogTypeException extends IllegalArgumentException {
+	/**
+	 * Serial ID
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Initialisiert die Fehler-Klasse
+	 */
+	public NoLogTypeException() {
+		super();
+	}
+	
+	/**
+	 * Initialisiert die Fehler-Klasse mit der übergebenen Nachricht.
+	 * 
+	 * @param message Nachricht, die mit ausgegeben werden soll.
+	 */
+	public NoLogTypeException(String message) {
+		super(message);
+	}
+}

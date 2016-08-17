@@ -29,6 +29,7 @@ import java.util.Properties;
 
 import org.log.datas.LogData;
 import org.log.elements.StatusBar;
+import org.log.exceptions.NoLogTypeException;
 
 /**
  * In dieser Klasse werden die Einstellungen für das Logbuch gespeichert.
@@ -104,7 +105,7 @@ public class LogConfig {
 	 * einzelnen Nachrichten-Typen zu speichern.
 	 */
 	public static final String PROPERTY_BCOLOR_MESSAGE =
-			"Log.property.message.bcolor";
+			"Log.property.message.bcolor.";
 	
 	/**
 	 * Speichert die Instanz dieser Klasse.
@@ -163,23 +164,7 @@ public class LogConfig {
 	 * Voreinstellungen gesetzt.
 	 */
 	private LogConfig() {
-//		_messagesOut = new HashMap<Short, Boolean>();
-//		_messagesOut.put(LogData.NO_OUT, false);
-//		_messagesOut.put(LogData.NONE, true);
-//		_messagesOut.put(LogData.ERROR, true);
-//		_messagesOut.put(LogData.WARNING, true);
-//		_messagesOut.put(LogData.OK, true);
-//		_messagesOut.put(LogData.INFO, true);
-//		_messagesOut.put(LogData.DATABASE_ERROR, true);
-//		_messagesOut.put(LogData.DATABASE_INSERT, true);
-//		
-//		_showMenu = true;
-//		
-//		_autoSave = true;
-//		_autoName = LOG_NAME;
-//		
-//		_packageName = new String();
-		_properties = new Properties();
+		clear();
 	}
 	
 	/**
@@ -268,6 +253,10 @@ public class LogConfig {
 	 * @param name Name der Datei, die automatisch generiert werden soll.
 	 */
 	public void setAutoFileName(String name) {
+		if ((name == null) || name.isEmpty())
+			throw new IllegalArgumentException(
+					"Der Datei-Name muss angegebenen werden.");
+		
 		_properties.setProperty(PROPERTY_AUTO_NAME, name);
 	}
 	
@@ -326,8 +315,12 @@ public class LogConfig {
 	 * Bei false nicht.
 	 */
 	public boolean getMessageTypeOut(short type) {
+		boolean standard = true;
+		if (type == LogData.NO_OUT)
+			standard = false;
+		
 		return Boolean.valueOf(_properties.getProperty(PROPERTY_SHOW_MESSAGE +
-				String.valueOf(type), "true"));
+				String.valueOf(type), String.valueOf(standard)));
 	}
 	
 	/**
@@ -339,6 +332,9 @@ public class LogConfig {
 	 * übergeben, so wird die Nachricht ausgegeben. Bei false, nicht.
 	 */
 	public void setMessageTypeOut(short type, boolean out) {
+		if ((type < 0) || (type > LogData.getTypesCount()))
+			throw new NoLogTypeException();
+		
 		_properties.setProperty(PROPERTY_SHOW_MESSAGE + String.valueOf(type),
 				String.valueOf(out));
 	}
@@ -365,6 +361,13 @@ public class LogConfig {
 	 * @param color Neue Textfarbe für den Nachrichten-Type
 	 */
 	public void setForeground(short type, Color color) {
+		if ((type < 0) || (type > LogData.getTypesCount()))
+			throw new NoLogTypeException();
+		
+		if (color == null)
+			throw new IllegalArgumentException(
+					"Die Farbe muss angegeben werden.");
+		
 		_properties.setProperty(PROPERTY_FCOLOR_MESSAGE + String.valueOf(type),
 				String.valueOf(color.getRGB()));
 	}
@@ -393,6 +396,13 @@ public class LogConfig {
 	 * @param color Neue Hintergrundfarbe für den Nachrichten-Type.
 	 */
 	public void setBackground(short type, Color color) {
+		if ((type < 0) || (type > LogData.getTypesCount()))
+			throw new NoLogTypeException();
+		
+		if (color == null)
+			throw new IllegalArgumentException(
+					"Die Farbe muss angegeben werden.");
+		
 		_properties.setProperty(PROPERTY_BCOLOR_MESSAGE + String.valueOf(type),
 				String.valueOf(color.getRGB()));
 	}
@@ -403,7 +413,7 @@ public class LogConfig {
 	 * @return Package-Name der eigenen Klassen.
 	 */
 	public String getPackageName() {
-		return _properties.getProperty(PROPERTY_PACKAGE_NAME);
+		return _properties.getProperty(PROPERTY_PACKAGE_NAME, new String());
 	}
 	
 	/**
@@ -412,6 +422,36 @@ public class LogConfig {
 	 * @param name Name des Packages der eigenen Klassen.
 	 */
 	public void setPackageName(String name) {
+		if ((name == null) || name.isEmpty())
+			throw new IllegalArgumentException(
+					"Der übergebene Package-Name muss angegeben werden.");
+		
 		_properties.setProperty(PROPERTY_PACKAGE_NAME, name);
 	}
+	
+	/**
+	 * Setzt die einzelnen Einstellungen zurück. Sollte nur zu Testzwecken
+	 * benutzt werden, da sonst möglicherweise die getätigten Einstellungen
+	 * verloren gehen.
+	 */
+	public void clear() {
+//		_messagesOut = new HashMap<Short, Boolean>();
+//		_messagesOut.put(LogData.NO_OUT, false);
+//		_messagesOut.put(LogData.NONE, true);
+//		_messagesOut.put(LogData.ERROR, true);
+//		_messagesOut.put(LogData.WARNING, true);
+//		_messagesOut.put(LogData.OK, true);
+//		_messagesOut.put(LogData.INFO, true);
+//		_messagesOut.put(LogData.DATABASE_ERROR, true);
+//		_messagesOut.put(LogData.DATABASE_INSERT, true);
+//		
+//		_showMenu = true;
+//		
+//		_autoSave = true;
+//		_autoName = LOG_NAME;
+//		
+//		_packageName = new String();
+		_properties = new Properties();
+	}
+	
 }

@@ -7,7 +7,7 @@
 	
 	<!-- Build-Nummer laden -->
 	<property name="version.file" location=".version"/>
-	<property name="version.header">!!!Dies ist eine automatisch generierte Datei - es dürfen keine Änderungen vorgenommen werden !!!${file.separator}#In dieser Datei stehen die Versions-Informationen für das Inventar-Plugin Gewicht.</property>
+	<property name="version.header">!!!Dies ist eine automatisch generierte Datei - es dürfen keine Änderungen vorgenommen werden !!!${file.separator}#In dieser Datei stehen die Versions-Informationen für das Logbuch-System.</property>
 	<include file="ant/version.xml"/>
 	<var name="version.buildnumber" value="no" />
 	<target name="build">
@@ -41,6 +41,9 @@
 	<!--Angabe des Klassenpfad für java-->
 	<path id="build.classpath">
 		<pathelement path="${java.class.path}" />
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
 		<fileset dir="C:\Users\René Majewski\.p2\pool\plugins\org.junit_4.12.0.v201504281640">
 			<filename name="junit.jar" />
 		</fileset>
@@ -116,5 +119,23 @@
 	<target name="main" depends="log">
 		<description>Kompeliert die einzelnen Klasse und erstellt die
 		JAR-Datei.</description>
+	</target>
+	
+	<!-- junit-Tests -->
+	<target name="junit" depends="clean, makedir, compile">
+		<description>Führt alle junit-Tests aus.</description>
+		<junit fork="on" forkmode="perTest">
+			<classpath refid="build.classpath">
+			</classpath>
+			<jvmarg value="-Dtesting=true"/>
+			<batchtest todir="${report.junit.work}">
+				<fileset dir="${src.dir}/tests" includes="**/Test*.java" />
+				<formatter type="xml" />
+			</batchtest>
+		</junit>
+		<junitreport todir="${report.junit.work}">
+			<fileset dir="${report.junit.work}" includes="**/*.xml" />
+			<report format="frames" todir="${report.junit}" />
+		</junitreport>
 	</target>
 </project>
